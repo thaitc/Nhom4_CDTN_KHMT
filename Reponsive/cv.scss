@@ -1,0 +1,13 @@
+$numcolum:12;
+@each $size,
+$vname in (250px, 's'),
+(800px, 'n'),
+(1000px, 'm') {
+    @media screen and (min-width: $size) {
+        @for $i from 1 through $numcolum {
+            .col-#{$vname}-#{$i} {
+                width: percentage($i/$numcolum);
+            }
+        }
+    }
+}
