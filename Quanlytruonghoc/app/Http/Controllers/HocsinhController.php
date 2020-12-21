@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Http\Request;
 
 class HocsinhController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     public function create()
     {
+        if (!$this->userCan('super_admin')) {
+            abort(403);
+        }
+        else
         //Lấy danh sách bảng khối
         $dskhoi = DB::table('tbl_khoi')->select('id', 'tenkhoi')->get();
         //Hiển thị trang thêm học sinh
@@ -103,7 +110,7 @@ class HocsinhController extends Controller
         );
 
         //Insert vào bảng tbl_hocsinh
-         $insertData = DB::table('tbl_hocsinh')->insert($dataInsertToDatabase);
+        $insertData = DB::table('tbl_hocsinh')->insert($dataInsertToDatabase);
         // if ($insertData) {
         // 	Session::flash('success', 'Thêm mới học sinh thành công!');
         // }else {                        
@@ -129,7 +136,7 @@ class HocsinhController extends Controller
         $dskhoi = DB::table('tbl_khoi')->select('id', 'tenkhoi')->get();
 
         //Lấy dữ liệu từ Database với các trường được lấy và với điều kiện id = $id
-        $getData = DB::table('tbl_hocsinh')->select('id', 'tenhocsinh', 'sodienthoai', 'hinhthe','lylich', 'khoi')->where('id', $id)->get();
+        $getData = DB::table('tbl_hocsinh')->select('id', 'tenhocsinh', 'sodienthoai', 'hinhthe', 'lylich', 'khoi')->where('id', $id)->get();
 
         //Gọi đến file edit.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên getHocSinhById = $getData và dskhoi = $dskhoi
         return view('hocsinh.edit', ['getHocSinhById' => $getData, 'dskhoi' => $dskhoi]);
