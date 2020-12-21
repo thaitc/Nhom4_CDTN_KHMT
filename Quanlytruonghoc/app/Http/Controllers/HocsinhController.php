@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class HocsinhController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function create()
     {
         //Lấy danh sách bảng khối

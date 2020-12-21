@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> @yield('title')</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> @yield('title')</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link href="/{!! url('public/css/dataTables.bootstrap.min.css') !!}" type="text/css" rel="stylesheet" />
 	<link href="/{!! url('public/css/bootstrap-custom.css') !!}" type="text/css" rel="stylesheet" />
 </head>
+
 <body>
-    <div class="container">
-        @section('content')
-        @show
-    </div>
+	<div class="container">
+		@section('content')
+		@show
+		@if (Auth::check())
+		<div>
+			Bạn đang đăng nhập với quyền
+			@if( Auth::user()->level == 1)
+			{{ "SuperAdmin" }}
+			@elseif( Auth::user()->level == 2)
+			{{ "Admin" }}
+			@elseif( Auth::user()->level == 3)
+			{{ "Thành viên" }}
+			@endif
+		</div>
+		<div class="pull-right" style="margin-top: 3px;"><a class="btn btn-primary" href="{{ url('/logout') }}">Đăng xuất</a></div>
+		@endif
+	</div>
 	<script type="text/javascript" src="/{!! url('public/js/jquery.min.js') !!}"></script>
-	<script type="text/javascript" src="/{!! url('public/js/bootstrap.min.js') !!}"></script>
+	<<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="/{!! url('public/js/jquery.dataTables.min.js') !!}"></script>
 	<script type="text/javascript" src="/{!! url('public/js/dataTables.bootstrap.min.js') !!}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#DataList").DataTable({
-				"aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+				"aLengthMenu": [
+					[10, 25, 50, 100, -1],
+					[10, 25, 50, 100, "Tất cả"]
+				],
 				"iDisplayLength": 10,
 				"oLanguage": {
 					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
@@ -34,11 +52,12 @@
 					"sSearch": "Tìm kiếm:",
 					"sZeroRecords": "Không có dữ liệu",
 					"sInfo": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ dòng được tìm thấy",
-					"sInfoEmpty" : "Không tìm thấy",
+					"sInfoEmpty": "Không tìm thấy",
 					"sInfoFiltered": " (trong tổng số _MAX_ dòng)"
 				}
 			});
 		});
 	</script>
 </body>
+
 </html>
