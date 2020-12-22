@@ -40,7 +40,11 @@ class LoginController extends Controller
 
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
                 // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
-                return redirect('hocsinh');
+                if( Auth::user()->level == 1 || Auth::user()->level == 2){
+                    return redirect('/');
+                }
+                else return redirect('/hocsinh');
+                
             } else {
                 // Kiểm tra không đúng sẽ hiển thị thông báo lỗi
                 // Session::flash('error', 'Email hoặc mật khẩu không đúng!');

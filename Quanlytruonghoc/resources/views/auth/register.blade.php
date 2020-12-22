@@ -36,6 +36,7 @@
 	</button>
 </div>
 @endif
+<link href="/Quanlytruonghoc/resources/css/login.css" rel="stylesheet" >
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 		<!-- Tabs Titles -->
@@ -59,12 +60,13 @@
 		<div id="formFooter">
 			<a href="{{ url('/login') }}" style="text-decoration: none;" class="underlineHover">Về Đăng nhập</a>
 		</div>
-
+		
 	</div>
 </div>
+<br/>
 <style>
 	body {
-		background: #17568C;
+		background-image: url('https://st.quantrimang.com/photos/image/2020/07/30/Hinh-Nen-Trang-6.jpg');
 	}
 
 	.panel {

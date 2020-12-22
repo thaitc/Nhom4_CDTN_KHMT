@@ -36,13 +36,14 @@
 	</button>
 </div>
 @endif
+<link href="/Quanlytruonghoc/resources/css/login.css" rel="stylesheet" >
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 		<!-- Tabs Titles -->
 
 		<!-- Icon -->
 		<div class="fadeIn first">
-			<img src="/Quanlytruonghoc/logo.png" id="icon" alt="User Icon" />
+			<img src="/Quanlytruonghoc/img/it.png" id="icon1" alt="User Icon" />
 		</div>
 
 		<!-- Login Form -->
@@ -59,10 +60,11 @@
 		</div>
 
 	</div>
+	<br/>
 </div>
 <style>
 	body {
-		background: #17568C;
+		background-image: url('https://img4.thuthuatphanmem.vn/uploads/2020/06/05/hinh-nen-powerpoint-cong-nghe_103230008.jpg');
 	}
 
 	.panel {
@@ -73,12 +75,7 @@
 		padding: 10px 15px;
 	}
 
-	.panel-title {
-		text-align: center;
-		font-size: 15px;
-		font-weight: bold;
-		color: #17568C;
-	}
+	
 
 	.panel-footer {
 		padding: 1px 15px;

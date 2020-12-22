@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title','Quản lý học sinh')
+@section('title','Quản lý trường học')
 @section('content')
 <?php //Hiển thị thông báo thành công
 ?>
@@ -151,17 +151,17 @@
                     @foreach($listhocsinh as $key => $hocsinh)
                     <tr>
                         <td style="text-align: center; vertical-align: middle;">{{ $key+1 }}</td>
-                        <td style="vertical-align: middle;">{{ $hocsinh->tenhocsinh }}</td>
+                        <td style="vertical-align: middle;"><a href="#">{{ $hocsinh->tenhocsinh }}</a></td>
                         <td style="vertical-align: middle;">{{ $hocsinh->sodienthoai }}</td>
                         <td style="text-align: center; vertical-align: middle; width: 10%;">
                             @if($hocsinh->hinhthe != '')
-                            <img onclick="MymodalImage(this);" alt="{{ $hocsinh->tenhocsinh }}" src="/public/upload/hinhthe/{{ $hocsinh->hinhthe }}" style="cursor: zoom-in;" width="60" />
+                            <img onclick="MymodalImage(this);" alt="{{ $hocsinh->tenhocsinh }}" src="/Quanlytruonghoc/public/upload/hinhthe/{{ $hocsinh->hinhthe }}" style="cursor: zoom-in;" width="60" />
                             @else
-                            <img onclick="MymodalImage(this);" alt="{{ $hocsinh->tenhocsinh }}" src="/public/upload/hinhthe/noimage.png" style="cursor: zoom-in;" width="60" />
+                            <img onclick="MymodalImage(this);" alt="{{ $hocsinh->tenhocsinh }}" src="/Quanlytruonghoc/public/upload/hinhthe/noimage.png" style="cursor: zoom-in;" width="60" />
                             @endif
                         <td style="text-align: center; vertical-align: middle; width: 10%;">
                             @if($hocsinh->lylich != '')
-                            <a class="btn btn-primary" href="/public/upload/lylich/{{ $hocsinh->lylich }}">Download về máy</a>
+                            <a class="btn btn-primary" href="/Quanlytruonghoc/public/upload/lylich/{{ $hocsinh->lylich }}">Download về máy</a>
                             @else
                             <img onclick="MymodalImage(this);" src="/public/upload/lylich/nofile.png" alt="{{ $hocsinh->tenhocsinh }}" style="cursor: zoom-in;" width="60" />
                             @endif
