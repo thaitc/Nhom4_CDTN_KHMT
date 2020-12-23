@@ -41,9 +41,9 @@ class LoginController extends Controller
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
                 // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
                 if( Auth::user()->level == 1 || Auth::user()->level == 2){
-                    return redirect('/');
+                    return redirect('/admin');
                 }
-                else return redirect('/hocsinh');
+                else return redirect('/');
                 
             } else {
                 // Kiểm tra không đúng sẽ hiển thị thông báo lỗi

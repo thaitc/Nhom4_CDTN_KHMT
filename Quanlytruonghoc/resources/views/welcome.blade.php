@@ -1,90 +1,69 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> @yield('title')</title>
+    <link href="/Quanlytruonghoc/resources/css/footer.css" rel="stylesheet">
+    <link href="/Quanlytruonghoc/resources/css/header.css" rel="stylesheet">
+    <link href="/Quanlytruonghoc/resources/css/menu.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<header>
+    <div class="header">
+        <a href="#default" class="logo"><img src="/Quanlytruonghoc/logo.png" id="icon" alt="User Icon" /></a>
+        <div class="header">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Xin chào {{ Auth::user()->name }}</a>
-                        <a href="{{ url('/logout') }}">Logout</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="top-right links">
+                @auth
+                <a href="{{ url('/home') }}">Xin chào {{ Auth::user()->name }}</a>
+                <a href="{{ url('/logout') }}">Logout</a>
+                @else
+                <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}">Register</a>
+                @endif
+                @endauth
+            </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Quản lý trường học
-                </div>
-            </div>
         </div>
-    </body>
+    </div>
+</header>
+
+<nav id="fixNav">
+    @if (Route::has('login'))
+    <div  style="padding-left:10% ;">
+        @auth
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Thông tin</a></li>
+            <li><a href="#">Hồ sơ</a></li>
+            <li>
+                <a href="#">Liên hệ</a>
+            </li>
+        </ul>
+        @else
+        @endauth
+    </div>
+    @endif
+</nav>
+<br />
+
+<body>
+    <div class="container">
+        @section('content')
+        @show
+    </div>
+</body>
+
+
 </html>

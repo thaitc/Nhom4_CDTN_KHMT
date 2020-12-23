@@ -44,13 +44,6 @@
     </button>
 </div>
 @endif
-<?php //Form thêm mới học sinh
-?>
-<p><a class="btn btn-primary" href="{{ url('/hocsinh') }}">Về danh sách</a></p>
-<div class="col-xs-4 col-xs-offset-4">
-    <center>
-        <h4>Thêm học sinh</h4>
-    </center>
     <form action="{{ url('/hocsinh/create') }}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
         <div class="form-group">

@@ -68,7 +68,11 @@
 
 #fixNav ul li:hover {
     /* Hover thì li sẽ đổi màu*/
-    background-color: #252525;
+    background-color: #ffffff;
+}
+
+#fixNav ul li a:hover {
+    color: #000;
 }
 
 #fixNav ul li:hover ul {

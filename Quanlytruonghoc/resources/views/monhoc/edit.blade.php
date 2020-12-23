@@ -1,15 +1,8 @@
-@extends('templates.master')
+@extends('templates.admin')
 
 @section('title','Quản lý môn học')
 
 @section('content')
-
-<div class="page-header">
-    <h4>Quản lý môn học</h4>
-</div>
-
-<?php //Hiển thị thông báo thành công
-?>
 @if ( Session::has('success') )
 <div class="alert alert-success alert-dismissible" role="alert">
     <strong>{{ Session::get('success') }}</strong>
@@ -31,14 +24,6 @@
     </button>
 </div>
 @endif
-
-<?php //Hiển thị form sửa học sinh
-?>
-<p><a class="btn btn-primary" href="{{ url('/monhoc') }}">Về danh sách</a></p>
-<div class="col-xs-4 col-xs-offset-4">
-    <center>
-        <h4>Sửa môn học</h4>
-    </center>
     <form action="{{ url('/monhoc/update') }}" method="post">
         <input type="hidden" id="_token" name="_token" value="{!! csrf_token() !!}" />
         <input type="hidden" id="id" name="id" value="{!! $getMonhocById[0]->id !!}" />

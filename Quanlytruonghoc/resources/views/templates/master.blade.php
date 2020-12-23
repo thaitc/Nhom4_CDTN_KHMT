@@ -8,7 +8,6 @@
 	<link href="/Quanlytruonghoc/resources/css/footer.css" rel="stylesheet">
 	<link href="/Quanlytruonghoc/resources/css/header.css" rel="stylesheet">
 	<link href="/Quanlytruonghoc/resources/css/menu.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//path/to/font-awesome/css/font-awesome.min.css">
@@ -21,7 +20,7 @@
 			@if (Route::has('login'))
 			<div class="top-right links">
 				@auth
-				<a href="{{ url('/home') }}">Xin chào {{ Auth::user()->name }}</a>
+				<a href="{{ url('/') }}">Xin chào {{ Auth::user()->name }}</a>
 				<a href="{{ url('/logout') }}">Logout</a>
 				@else
 				<a href="{{ route('login') }}">Login</a>
@@ -47,11 +46,6 @@
 			<li><a href="#">Hồ sơ</a></li>
 			<li>
 				<a href="#">Liên hệ</a>
-				<ul class="sub-menu">
-					<li><a href="#">Html & CSS</a></li>
-					<li><a href="#">PHP & MySQL</a></li>
-					<li><a href="#">jQuery</a></li>
-				</ul>
 			</li>
 		</ul>
 		@else
