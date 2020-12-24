@@ -42,18 +42,18 @@
     <center>
         <h4>Thêm môn học</h4>
     </center>
-    <form action="{{ url('/monhoc/create') }}" method="post">
+    <form action="{{ url('admin/monhoc/create') }}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
         <div class="form-group">
             <label for="tenmon">Tên môn</label>
             <input type="text" class="form-control" id="tenmon" name="tenmon" placeholder="Tên môn" maxlength="255" required />
         </div>
         <div class="form-group">
-            <label for="tengiangvien">Chọn giảng viên</label>
-            <select class="form-control" id="tengiangvien" name="tengiangvien" required>
-                <option value="">-- Chọn giảng viên --</option>
-                @foreach($dsgiangvien as $tengiangvien)
-                <option value="{!! $tengiangvien->id !!}">{!! $tengiangvien->tengiangvien !!}</option>
+            <label for="tengiangvien">Chọn khoa</label>
+            <select class="form-control" id="tenkhoa" name="tenkhoa" required>
+                <option value="">-- Chọn khoa --</option>
+                @foreach($dskhoa as $tenkhoa)
+                <option value="{!! $tenkhoa->tenkhoa !!}">{!! $tenkhoa->tenkhoa !!}</option>
                 @endforeach
             </select>
         </div>

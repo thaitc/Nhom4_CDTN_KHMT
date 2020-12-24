@@ -1,9 +1,8 @@
 @extends('templates.admin')
 
-@section('title','Thêm mới học sinh')
+@section('title','Thêm mới giảng viên')
 
 @section('content')
-
 @if ( Session::has('success') )
 <div class="alert alert-success alert-dismissible" role="alert">
     <strong>{{ Session::get('success') }}</strong>
@@ -38,35 +37,41 @@
     </button>
 </div>
 @endif
-    <form action="{{ url('admin/hocsinh/create') }}" method="post">
+
+<div class="col-xs-4 col-xs-offset-4">
+    <center>
+        <h4>Thêm giảng viên</h4>
+    </center>
+    <form action="{{ url('admin/giangvien/create') }}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
         <div class="form-group">
-            <label for="tenhocsinh">Tên học sinh</label>
-            <input type="text" class="form-control" id="tenhocsinh" name="tenhocsinh" placeholder="Tên học sinh" maxlength="255" required />
+            <label for="tengiangvien">Tên giảng viên</label>
+            <input type="text" class="form-control" id="tengiangvien" name="tengiangvien" placeholder="Tên giảng viên" maxlength="255" required />
         </div>
         <div class="form-group">
-            <label for="sodienthoai">Số điện thoại</label>
-            <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Số điện thoại" maxlength="15" required />
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email" maxlength="100" required />
         </div>
         <div class="form-group">
-            <label for="hinhthe">Chọn hình thẻ</label>
-            <input type="file" class="form-control" id="hinhthe" name="hinhthe" />
+            <label for="pass">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu" maxlength="500" required />
         </div>
         <div class="form-group">
-            <label for="lylich">Chọn file lý lịch</label>
-            <input type="file" class="form-control" id="lylich" name="lylich" />
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ" maxlength="500" required />
         </div>
         <div class="form-group">
-            <label for="khoi">Chọn khối</label>
-            <select class="form-control" id="khoi" name="khoi" required>
-                <option value="">-- Chọn khối --</option>
-                @foreach($dskhoi as $khoi)
-                <option value="{!! $khoi->id !!}">{!! $khoi->tenkhoi !!}</option>
+            <label for="tengiangvien">Chọn khoa</label>
+            <select class="form-control" id="tenkhoa" name="tenkhoa" required>
+                <option value="">-- Chọn khoa --</option>
+                @foreach($dskhoa as $tenkhoa)
+                <option value="{!! $tenkhoa->tenkhoa !!}">{!! $tenkhoa->tenkhoa !!}</option>
                 @endforeach
             </select>
         </div>
+        
+        
         <center><button type="submit" class="btn btn-primary">Thêm</button></center>
     </form>
 </div>
-
 @endsection

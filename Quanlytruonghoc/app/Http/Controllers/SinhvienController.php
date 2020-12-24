@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Http\Request;
 
-class MonhocController extends Controller
+class SinhvienController extends Controller
 {
     public function __construct()
     {
@@ -16,14 +16,14 @@ class MonhocController extends Controller
     }
     public function create()
     {
-        // if (!$this->userCan('super_admin')) {
-        //     abort(403);
-        // }
-        // else
-        //Lấy danh sách bảng giangvien
+        if (!$this->userCan('super_admin')) {
+            abort(403);
+        }
+        else
+        //Lấy danh sách bảng khối
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
-        //Hiển thị trang thêm mon hoc
-        return view('monhoc.create')->with('dskhoa', $dskhoa);
+        //Hiển thị trang thêm học sinh
+        return view('sinhvien.create')->with('dskhoa', $dskhoa);
     }
     public function store(Request $request)
     {
@@ -32,37 +32,43 @@ class MonhocController extends Controller
             $request,
             [
                 //Kiểm tra giá trị rỗng
-                'tenmon' => 'required',
+                'masinhvien' => 'required',
+                'hoten' => 'required',
+                'email' => 'required',
                 'tenkhoa' => 'required',
-                'tinchi' => 'required',
+                'diachi' => 'required',
             ],
             [
                 //Tùy chỉnh hiển thị thông báo
-                'tenmon.required' => 'Bạn chưa nhập tên môn!',
+                'masinhvien.required' => 'Bạn chưa nhập mã sinh viên!',
+                'hoten.required' => 'Bạn chưa nhập họ tên!',
+                'email.required' => 'Bạn chưa nhập email!',
                 'tenkhoa.required' => 'Bạn chưa chọn khoa!',
-                'tinchi.required' => 'Bạn chưa nhập số tín chỉ!',
+                'diachi.required' => 'Bạn chưa nhập địa chỉ!',
             ]
-        );
-
-
+        );   
         //Lấy giá trị học sinh đã nhập
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $allRequest  = $request->all();
-        $tenmon  = $allRequest['tenmon'];
+        $masinhvien  = $allRequest['masinhvien'];
+        $hoten = $allRequest['hoten'];
+        $email = $allRequest['email'];
         $tenkhoa = $allRequest['tenkhoa'];
-        $tinchi = $allRequest['tinchi'];
+        $diachi = $allRequest['diachi'];
 
         //Gán giá trị vào array
         $dataInsertToDatabase = array(
-            'tenmon'  => $tenmon,
+            'masinhvien'  => $masinhvien,
+            'hoten' => $hoten,
+            'email' => $email,
             'tenkhoa' => $tenkhoa,
-            'tinchi' => $tinchi,
+            'diachi' => $diachi,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );
 
         //Insert vào bảng tbl_hocsinh
-        $insertData = DB::table('monhoc')->insert($dataInsertToDatabase);
+        $insertData = DB::table('sinhvien')->insert($dataInsertToDatabase);
         // if ($insertData) {
         // 	Session::flash('success', 'Thêm mới học sinh thành công!');
         // }else {                        
@@ -70,19 +76,17 @@ class MonhocController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('admin/monhoc');
+        return redirect('admin/sinhvien');
     }
     public function index()
     {
         //Lấy danh sách học sinh từ database
-        // $getData = DB::table('monhoc as mh')
-        //     ->leftJoin('giangvien as tengiangvien', 'mh.tengiangvien', '=', 'tengiangvien.id')
-        //     ->select('mh.id', 'mh.tenmon', 'mh.tengiangvien', 'mh.tinchi', 'tengiangvien.tengiangvien')->get();
-        $getData = DB::table('monhoc as mh')
-            ->leftJoin('khoa as tenkhoa', 'mh.tenkhoa', '=', 'tenkhoa.tenkhoa')
-            ->select('mh.id', 'mh.tenmon', 'mh.tenkhoa', 'mh.tinchi', 'tenkhoa.tenkhoa')->get();
+        $getData = DB::table('sinhvien as sv')
+            ->leftJoin('khoa as tenkhoa', 'sv.tenkhoa', '=', 'tenkhoa.tenkhoa')
+            ->select('sv.id', 'sv.masinhvien', 'sv.hoten', 'sv.email', 'sv.diachi', 'tenkhoa.tenkhoa')->get();
+
         //Gọi đến file list.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên listhocsinh = $getData
-        return view('monhoc.list')->with('listmonhoc', $getData);
+        return view('sinhvien.list')->with('listsinhvien', $getData);
     }
     public function edit($id)
     {
@@ -90,10 +94,10 @@ class MonhocController extends Controller
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
 
         //Lấy dữ liệu từ Database với các trường được lấy và với điều kiện id = $id
-        $getData = DB::table('monhoc')->select('id', 'tenmon', 'tenkhoa', 'tinchi')->where('id', $id)->get();
+        $getData = DB::table('sinhvien')->select('id', 'masinhvien', 'hoten', 'email', 'diachi', 'tenkhoa')->where('id', $id)->get();
 
         //Gọi đến file edit.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên getHocSinhById = $getData và dskhoi = $dskhoi
-        return view('monhoc.edit', ['getMonhocById' => $getData, 'dskhoa' => $dskhoa]);
+        return view('sinhvien.edit', ['getSinhVienById' => $getData, 'dskhoa' => $dskhoa]);
     }
     public function update(Request $request)
     {
@@ -104,21 +108,29 @@ class MonhocController extends Controller
         $this->validate(
             $request,
             [
-                'tenmon' => 'required',
+                'masinhvien' => 'required',
+                'hoten' => 'required',
+                'email' => 'required',
+                'diachi' => 'required',
                 'tenkhoa' => 'required',
-                'tinchi' => 'required',
             ],
             [
-                'tenmon.required' => 'Bạn chưa nhập tên môn!',
+                'masinhvien.required' => 'Bạn chưa nhập mã sinh viên!',
+                'hoten.required' => 'Bạn chưa nhập họ tên!',
+                'email.required' => 'Bạn chưa nhập email!',
+                'diachi.required' => 'Bạn chưa nhập địa chỉ!',
                 'tenkhoa.required' => 'Bạn chưa chọn khoa!',
-                'tinchi.required' => 'Bạn chưa nhập tín chỉ!',
             ]
         );
+
+        
         //Thực hiện câu lệnh update với các giá trị $request trả về
-        $updateData = DB::table('monhoc')->where('id', $request->id)->update([
-            'tenmon' => $request->tenmon,
+        $updateData = DB::table('sinhvien')->where('id', $request->id)->update([
+            'masinhvien' => $request->masinhvien,
+            'hoten' => $request->hoten,
+            'email' => $request->email,
+            'diachi' => $request->diachi,
             'tenkhoa' => $request->tenkhoa,
-            'tinchi' => $request->tinchi,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
@@ -130,13 +142,13 @@ class MonhocController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('admin/monhoc');
+        return redirect('admin/sinhvien');
     }
     public function destroy($id)
     {
         //Xoa hoc sinh
         //Thực hiện câu lệnh xóa với giá trị id = $id trả về
-        $deleteData = DB::table('monhoc')->where('id', '=', $id)->delete();
+        $deleteData = DB::table('sinhvien')->where('id', '=', $id)->delete();
 
         //Kiểm tra lệnh delete để trả về một thông báo
         // if ($deleteData) {
@@ -146,6 +158,6 @@ class MonhocController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('admin/monhoc');
+        return redirect('admin/sinhvien');
     }
 }

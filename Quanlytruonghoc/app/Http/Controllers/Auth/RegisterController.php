@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\User;
 
 class RegisterController extends Controller
@@ -36,16 +38,17 @@ class RegisterController extends Controller
         );
     }
     protected function create(array $data)
-{
-	return User::create([
-		'name' => $data['name'],
-		'email' => $data['email'],
-		'level' => '3',
-		'password' => bcrypt($data['password']),
-	]);
-}
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'level' => '3',
+            'password' => bcrypt($data['password']),
+        ]);
+    }
     public function postRegister(Request $request)
     {
+
         // Kiểm tra dữ liệu vào
         $allRequest  = $request->all();
         $validator = $this->validator($allRequest);
@@ -56,12 +59,26 @@ class RegisterController extends Controller
         } else {
             // Dữ liệu vào hợp lệ sẽ thực hiện tạo người dùng dưới csdl
             if ($this->create($allRequest)) {
+                $email = $request['email'];
+                $name = $request['name'];
+                $dataInsertToDatabase = array(
+                    'masinhvien'  => '',
+                    'hoten' => $name,
+                    'email' => $email,
+                    'tenkhoa' => '',
+                    'diachi' => '',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                );
+
+                //Insert vào bảng tbl_hocsinh
+                $insertData = DB::table('sinhvien')->insert($dataInsertToDatabase);
                 // Insert thành công sẽ hiển thị thông báo
-                //Session::flash('success', 'Đăng ký thành viên thành công!');
+                Session::flash('success', 'Đăng ký thành viên thành công!');
                 return redirect('login');
             } else {
                 // Insert thất bại sẽ hiển thị thông báo lỗi
-                //Session::flash('error', 'Đăng ký thành viên thất bại!');
+                Session::flash('error', 'Đăng ký thành viên thất bại!');
                 return redirect('register');
             }
         }

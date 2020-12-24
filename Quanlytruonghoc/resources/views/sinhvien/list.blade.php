@@ -1,6 +1,8 @@
 @extends('templates.admin')
-@section('title','Quản lý môn học')
+@section('title','Quản lý sinh viên')
 @section('content')
+<?php //Hiển thị thông báo thành công
+?>
 @if ( Session::has('success') )
 <div class="alert alert-success alert-dismissible" role="alert">
     <strong>{{ Session::get('success') }}</strong>
@@ -21,20 +23,20 @@
     </button>
 </div>
 @endif
-<?php //Hiển thị danh sách học sinh
-?>
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
-            <p><a class="btn btn-primary" href="{{ url('admin/monhoc/create') }}">Thêm mới</a></p>
+            <p><a class="btn btn-primary" href="{{ url('admin/sinhvien/create') }}">Thêm mới</a></p>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên môn</th>
-                        <th>Tên khoa</th>
-                        <th>Tín chỉ</th>
+                        <th>Mã sinh viên</th>
+                        <th>Tên sinh viên</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Khoa</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
@@ -42,18 +44,19 @@
                 <tbody>
                     <?php //Vòng lập foreach lấy giá vào bảng
                     ?>
-                    @foreach($listmonhoc as $key => $monhoc)
+                    @foreach($listsinhvien as $key => $sinhvien)
                     <tr>
                         <td style="text-align: center; vertical-align: middle;">{{ $key+1 }}</td>
-                        <td style="vertical-align: middle;"><a href="#">{{ $monhoc->tenmon }}</a></td>
+                        <td style="vertical-align: middle;"><a href="#">{{ $sinhvien->masinhvien }}</a></td>
+                        <td style="vertical-align: middle;">{{ $sinhvien->hoten }}</td>
+                        <td style="vertical-align: middle;">{{ $sinhvien->email }}</td>
+                        <td style="vertical-align: middle;">{{ $sinhvien->diachi }}</td>
+                        
                         <td style="text-align: center; vertical-align: middle;">
-                            {{ $monhoc->tenkhoa }}
+                            {{ $sinhvien->tenkhoa }}
                         </td>
-                        <td style="vertical-align: middle;">{{ $monhoc->tinchi }}</td>
-                        
-                        
-                        <td style="text-align: center; vertical-align: middle;"><a href="monhoc/{{ $monhoc->id }}/edit">Sửa</a></td>
-                        <td style="text-align: center; vertical-align: middle;"><a href="monhoc/{{ $monhoc->id }}/delete">Xóa</a></td>
+                        <td style="text-align: center; vertical-align: middle;"><a href="sinhvien/{{ $sinhvien->id }}/edit">Sửa</a></td>
+                        <td style="text-align: center; vertical-align: middle;"><a href="sinhvien/{{ $sinhvien->id }}/delete">Xóa</a></td>
                     </tr>
                     @endforeach
                 </tbody>

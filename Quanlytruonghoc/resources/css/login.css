@@ -1,8 +1,7 @@
 /* BASIC */
 
 html {
-    /* background-color: #ffffff; */
-    background-image: url('https://st.quantrimang.com/photos/image/2020/07/30/Hinh-Nen-Trang-6.jpg');
+    background: url('/Quanlytruonghoc/img/bia2.png');
 }
 
 body {
@@ -43,7 +42,7 @@ h2 {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
+    background: url('/Quanlytruonghoc/img/mo.jpg');
     padding: 30px;
     width: 90%;
     max-width: 450px;
@@ -105,7 +104,7 @@ input[type=reset] {
 input[type=button]:hover,
 input[type=submit]:hover,
 input[type=reset]:hover {
-    background-color: #39ace7;
+    background-color: #1658bb;
 }
 
 input[type=button]:active,
@@ -120,7 +119,7 @@ input[type=reset]:active {
 
 input[type=text],
 [type=password] {
-    background-color: #f6f6f6;
+    background-color: #f1e7e7;
     border: none;
     color: #0d0d0d;
     padding: 15px 32px;

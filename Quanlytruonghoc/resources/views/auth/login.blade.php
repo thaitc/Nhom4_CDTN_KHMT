@@ -45,7 +45,7 @@
 		<div class="fadeIn first">
 			<img src="/Quanlytruonghoc/img/it.png" id="icon1" alt="User Icon" />
 		</div>
-
+		<br/>
 		<!-- Login Form -->
 		<form role="form" action="{{ url('/login') }}" method="POST">
 			{!! csrf_field() !!}
@@ -64,7 +64,7 @@
 </div>
 <style>
 	body {
-		background-image: url('https://img4.thuthuatphanmem.vn/uploads/2020/06/05/hinh-nen-powerpoint-cong-nghe_103230008.jpg');
+		background: url('/Quanlytruonghoc/img/no.jpg');
 	}
 
 	.panel {

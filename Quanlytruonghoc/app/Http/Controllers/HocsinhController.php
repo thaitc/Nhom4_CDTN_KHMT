@@ -118,7 +118,7 @@ class HocsinhController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('hocsinh');
+        return redirect('admin/hocsinh');
     }
     public function index()
     {
@@ -235,7 +235,7 @@ class HocsinhController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('hocsinh');
+        return redirect('admin/hocsinh');
     }
     public function destroy($id)
     {
@@ -251,6 +251,6 @@ class HocsinhController extends Controller
         // }
 
         //Thực hiện chuyển trang
-        return redirect('hocsinh');
+        return redirect('admin/hocsinh');
     }
 }

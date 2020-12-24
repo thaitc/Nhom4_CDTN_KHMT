@@ -1,6 +1,6 @@
 @extends('templates.admin')
 
-@section('title','Quản lý học sinh')
+@section('title','Quản lý sinh viên')
 
 @section('content')
 @if ( Session::has('success') )
@@ -24,31 +24,31 @@
     </button>
 </div>
 @endif
-<form action="{{ url('/admin/hocsinh/update') }}" method="post">
+<form action="{{ url('/admin/sinhvien/update') }}" method="post">
     <input type="hidden" id="_token" name="_token" value="{!! csrf_token() !!}" />
-    <input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
+    <input type="hidden" id="id" name="id" value="{!! $getSinhVienById[0]->id !!}" />
     <div class="form-group">
-        <label for="tenhocsinh">Tên học sinh</label>
-        <input type="text" class="form-control" id="tenhocsinh" name="tenhocsinh" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->tenhocsinh }}" required />
+        <label for="masinhvien">Mã sinh viên</label>
+        <input type="text" class="form-control" id="masinhvien" name="masinhvien" placeholder="Mã học sinh" maxlength="255" value="{{ $getSinhVienById[0]->masinhvien }}" required />
     </div>
     <div class="form-group">
-        <label for="sodienthoai">Số điện thoại</label>
-        <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Số điện thoại" maxlength="15" value="{{ $getHocSinhById[0]->sodienthoai }}" required />
+        <label for="tensinhvien">Tên sinh viên</label>
+        <input type="text" class="form-control" id="hoten" name="hoten" placeholder="Tên sinh viên" maxlength="255" value="{{ $getSinhVienById[0]->hoten }}" required />
     </div>
     <div class="form-group">
-        <label for="hinhthe">Chọn hình thẻ mới</label>
-        <input type="file" class="form-control" id="hinhthe" name="hinhthe" />
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email" maxlength="15" value="{{ $getSinhVienById[0]->email }}" required />
     </div>
     <div class="form-group">
-        <label for="lylich">Chọn file lý lịch mới</label>
-        <input type="file" class="form-control" id="lylich" name="lylich" />
+        <label for="email">Địa chỉ</label>
+        <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ" maxlength="15" value="{{ $getSinhVienById[0]->diachi }}" required />
     </div>
     <div class="form-group">
-        <label for="khoi">Chọn khối</label>
-        <select class="form-control" id="khoi" name="khoi" required>
-            <option value="">-- Chọn khối --</option>
-            @foreach($dskhoi as $khoi)
-            <option value="{!! $khoi->id !!}" {!! ($getHocSinhById[0]->khoi == $khoi->id) ? 'selected="selected"' : null !!}>{!! $khoi->tenkhoi !!}</option>
+        <label for="khoi">Chọn khoa</label>
+        <select class="form-control" id="tenkhoa" name="tenkhoa" required>
+            <option value="">-- Chọn khoa --</option>
+            @foreach($dskhoa as $tenkhoa)
+            <option value="{!! $tenkhoa->tenkhoa !!}" {!! ($getSinhVienById[0]->tenkhoa == $tenkhoa->tenkhoa) ? 'selected="selected"' : null !!}>{!! $tenkhoa->tenkhoa !!}</option>
             @endforeach
         </select>
     </div>

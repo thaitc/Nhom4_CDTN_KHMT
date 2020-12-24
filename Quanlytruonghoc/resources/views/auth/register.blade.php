@@ -66,7 +66,7 @@
 <br/>
 <style>
 	body {
-		background-image: url('https://st.quantrimang.com/photos/image/2020/07/30/Hinh-Nen-Trang-6.jpg');
+		background: url('/Quanlytruonghoc/img/bia2.png');
 	}
 
 	.panel {

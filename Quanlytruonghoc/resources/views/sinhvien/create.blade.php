@@ -1,6 +1,6 @@
 @extends('templates.admin')
 
-@section('title','Thêm mới học sinh')
+@section('title','Thêm mới sinh viên')
 
 @section('content')
 
@@ -38,30 +38,30 @@
     </button>
 </div>
 @endif
-    <form action="{{ url('admin/hocsinh/create') }}" method="post">
+    <form action="{{ url('admin/sinhvien/create') }}" method="post">
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
         <div class="form-group">
-            <label for="tenhocsinh">Tên học sinh</label>
-            <input type="text" class="form-control" id="tenhocsinh" name="tenhocsinh" placeholder="Tên học sinh" maxlength="255" required />
+            <label for="masinhvien">Mã sinh viên</label>
+            <input type="text" class="form-control" id="masinhvien" name="masinhvien" placeholder="Mã sinh viên" maxlength="255" required />
         </div>
         <div class="form-group">
-            <label for="sodienthoai">Số điện thoại</label>
-            <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Số điện thoại" maxlength="15" required />
+            <label for="tensinhvien">Tên sinh viên</label>
+            <input type="text" class="form-control" id="hoten" name="hoten" placeholder="Tên sinh viên" maxlength="255" required />
         </div>
         <div class="form-group">
-            <label for="hinhthe">Chọn hình thẻ</label>
-            <input type="file" class="form-control" id="hinhthe" name="hinhthe" />
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email" maxlength="100" required />
         </div>
         <div class="form-group">
-            <label for="lylich">Chọn file lý lịch</label>
-            <input type="file" class="form-control" id="lylich" name="lylich" />
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="diachi" maxlength="100" required />
         </div>
         <div class="form-group">
-            <label for="khoi">Chọn khối</label>
-            <select class="form-control" id="khoi" name="khoi" required>
-                <option value="">-- Chọn khối --</option>
-                @foreach($dskhoi as $khoi)
-                <option value="{!! $khoi->id !!}">{!! $khoi->tenkhoi !!}</option>
+            <label for="khoi">Chọn khoa</label>
+            <select class="form-control" id="tenkhoa" name="tenkhoa" required>
+                <option value="">-- Chọn khoa --</option>
+                @foreach($dskhoa as $tenkhoa)
+                <option value="{!! $tenkhoa->tenkhoa !!}">{!! $tenkhoa->tenkhoa !!}</option>
                 @endforeach
             </select>
         </div>
