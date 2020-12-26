@@ -1,4 +1,4 @@
-@extends('templates.master')
+@extends('welcome')
 @section('title','Trang quản lý')
 @section('content')
 <?php //Hiển thị thông báo thành công
@@ -51,7 +51,7 @@
 			{!! csrf_field() !!}
 			<input placeholder="Email" name="email" type="text" value="{{ old('email') }}" class="fadeIn second">
 			<input placeholder="Mật khẩu" name="password" type="password" value="" class="fadeIn second">
-			<input type="submit" class="fadeIn fourth" value="Đăng Nhập">
+			<input type="submit" class="fadeIn second" value="Đăng Nhập">
 		</form>
 
 		<!-- Remind Passowrd -->

@@ -1,4 +1,4 @@
-@extends('templates.master')
+@extends('welcome')
 @section('title','Trang quản lý')
 @section('content')
 <?php //Hiển thị thông báo thành công

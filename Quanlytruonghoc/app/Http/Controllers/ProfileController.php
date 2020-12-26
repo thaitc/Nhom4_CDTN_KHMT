@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -24,23 +24,23 @@ class ProfileController extends Controller
         date_default_timezone_set("Asia/Ho_Chi_Minh");
 
         //Kiểm tra giá trị tenhocsinh, sodienthoai, khoi
-        // $this->validate(
-        //     $request,
-        //     [
-        //         'masinhvien' => 'required',
-        //         'hoten' => 'required',
-        //         'email' => 'required',
-        //         'diachi' => 'required',
-        //         'tenkhoa' => 'required',
-        //     ],
-        //     [
-        //         'masinhvien.required' => 'Bạn chưa nhập mã sinh viên!',
-        //         'hoten.required' => 'Bạn chưa nhập họ tên!',
-        //         'email.required' => 'Bạn chưa nhập email!',
-        //         'diachi.required' => 'Bạn chưa nhập địa chỉ!',
-        //         'tenkhoa.required' => 'Bạn chưa chọn khoa!',
-        //     ]
-        // );
+        $this->validate(
+            $request,
+            [
+                'masinhvien' => 'required',
+                'hoten' => 'required',
+                'email' => 'required',
+                'diachi' => 'required',
+                'tenkhoa' => 'required',
+            ],
+            [
+                'masinhvien.required' => 'Bạn chưa nhập mã sinh viên!',
+                'hoten.required' => 'Bạn chưa nhập họ tên!',
+                'email.required' => 'Bạn chưa nhập email!',
+                'diachi.required' => 'Bạn chưa nhập địa chỉ!',
+                'tenkhoa.required' => 'Bạn chưa chọn khoa!',
+            ]
+        );
 
 
         //Thực hiện câu lệnh update với các giá trị $request trả về
@@ -49,20 +49,23 @@ class ProfileController extends Controller
         $diachi = $request['diachi'];
         $tenkhoa = $request['tenkhoa'];
         $updateData = DB::table('sinhvien')->where('email', Auth::user()->email)->update([
-            'masinhvien' =>$masinhvien ,
+            'masinhvien' => $masinhvien,
             'hoten' => $hoten,
-
             'diachi' => $diachi,
             'tenkhoa' => $tenkhoa,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
+        $tenkhoa = $request['tenkhoa'];
+        $updateData = DB::table('users')->where('email', Auth::user()->email)->update([
+            'tenkhoa' => $tenkhoa,
+        ]);
 
         //Kiểm tra lệnh update để trả về một thông báo
-        // if ($updateData) {
-        //     Session::flash('success', 'Sửa học sinh thành công!');
-        // } else {
-        //     Session::flash('error', 'Sửa thất bại!');
-        // }
+        if ($updateData) {
+            Session::flash('success', 'Sửa học sinh thành công!');
+        } else {
+            Session::flash('error', 'Sửa thất bại!');
+        }
 
         //Thực hiện chuyển trang
         return redirect('profile');

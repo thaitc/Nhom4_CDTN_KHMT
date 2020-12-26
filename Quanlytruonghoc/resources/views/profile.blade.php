@@ -26,7 +26,7 @@
         <select class="form-control" id="tenkhoa" name="tenkhoa" required>
             <option value="">-- Chọn khoa --</option>
             @foreach($dskhoa as $tenkhoa)
-            <option value="{!! $tenkhoa->id !!}" {!! ($getSinhVienById[0]->tenkhoa == $tenkhoa->id) ? 'selected="selected"' : null !!}>{!! $tenkhoa->tenkhoa !!}</option>
+            <option value="{!! $tenkhoa->tenkhoa !!}" {!! ($getSinhVienById[0]->tenkhoa == $tenkhoa->tenkhoa) ? 'selected="selected"' : null !!}>{!! $tenkhoa->tenkhoa !!}</option>
             @endforeach
         </select>
     </div>

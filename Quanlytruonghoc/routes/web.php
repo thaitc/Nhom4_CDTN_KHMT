@@ -45,6 +45,10 @@ Route::post('admin/giangvien/create', 'GiangvienController@store');
 Route::get('admin/giangvien/{id}/edit', 'GiangvienController@edit'); 
 Route::post('admin/giangvien/update', 'GiangvienController@update'); 
 Route::get('admin/giangvien/{id}/delete', 'GiangvienController@destroy');
+
+Route::get('danhsachlop', 'GiangvienController@danhsachlop');
+Route::get('danhsachlop/{tenmon}', 'GiangvienController@danhsachchitiet');
+Route::post('danhsachlop/{tenmon}', 'GiangvienController@updatediem');
 //
 Route::get('/thoikhoabieu', 'ThoikhoabieuController@index');
 Route::get('thoikhoabieu/create', 'ThoikhoabieuController@create');

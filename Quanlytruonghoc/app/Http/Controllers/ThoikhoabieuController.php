@@ -52,6 +52,10 @@ class ThoikhoabieuController extends Controller
         $allRequest  = $request->all();
         $tenmon = $allRequest['tenmon'];
         $tengiangvien = $allRequest['tengiangvien'];
+        $email = DB::table('giangvien')->select('email')->where('tengiangvien',  $request->input('tengiangvien'))->get();
+        foreach ($email as $gv) {
+            $gv->email;
+        }
         $tinchi = DB::table('monhoc')->select('tinchi')->where('tenmon',  $request->input('tenmon'))->get();
         foreach ($tinchi as $tin) {
             $tin->tinchi;
@@ -61,6 +65,7 @@ class ThoikhoabieuController extends Controller
             'sinhvien'  => Auth::user()->name,
             'tenmon' => $tenmon,
             'tengiangvien' => $tengiangvien,
+            'email' => $gv->email,
             'tinchi' => $tin->tinchi,
         );
 
