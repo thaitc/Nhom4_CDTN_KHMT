@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -47,9 +48,11 @@ Route::post('admin/giangvien/update', 'GiangvienController@update');
 Route::get('admin/giangvien/{id}/delete', 'GiangvienController@destroy');
 
 Route::get('danhsachlop', 'GiangvienController@danhsachlop');
-Route::get('danhsachlop/{tenmon}', 'GiangvienController@danhsachchitiet');
-Route::post('danhsachlop/{tenmon}', 'GiangvienController@updatediem');
+Route::get('danhsachlop/danhsachchitiet', 'DanhsachlopController@index');
+Route::get('danhsachlop/danhsachchitiet/{id}/edit', 'DanhsachlopController@edit');
+Route::post('danhsachlop/danhsachchitiet/update', 'DanhsachlopController@update');
 //
 Route::get('/thoikhoabieu', 'ThoikhoabieuController@index');
 Route::get('thoikhoabieu/create', 'ThoikhoabieuController@create');
 Route::post('thoikhoabieu/create', 'ThoikhoabieuController@store');
+Route::get('/home', 'HomeController@index')->name('home');

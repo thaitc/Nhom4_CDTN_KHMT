@@ -30,7 +30,8 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên môn</th>                          
+                        <th>Tên môn</th>     
+                        <th>Action</th>                     
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +41,7 @@
                     <tr>
                         <td style="text-align: center; vertical-align: middle;">{{ $key+1 }}</td>
                         <td style="vertical-align: middle;"><a  href="danhsachlop/{{ $ds->tenmon }}">{{$ds->tenmon}}</a></td>                    
-                       
+                       <td style="text-align: center; vertical-align: middle;"><a href="danhsachlop/danhsachchitiet">Xem lớp</a></td>
                     </tr>
                     @endforeach
                 </tbody>

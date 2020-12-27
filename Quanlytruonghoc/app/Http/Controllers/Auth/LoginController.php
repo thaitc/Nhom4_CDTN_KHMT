@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\GiangvienController;
-use Giangvien;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller

@@ -40,15 +40,16 @@
                     <tbody>
                         <?php //Vòng lập foreach lấy giá vào bảng
                         ?>
-                        @foreach($dslop as $key => $ds)
+                        @foreach($listdanhsachlop as $key => $ds)
                         <tr>
                             <td style="text-align: center; vertical-align: middle;">{{ $key+1 }}</td>
                             <td style="vertical-align: middle;"><a href="#">{{ $ds->sinhvien }}</a></td>
                             <td style="vertical-align: middle;">{{ $ds->tenmon }}</td>
                             <td style="vertical-align: middle;">
-                                <input type="number" class="form-control" id="diem" name="diem" placeholder="Nhập điểm" maxlength="255" required />
+                                <input type="number" class="form-control" value="{{$ds->diem}}" id="diem" name="diem" placeholder="Nhập điểm" maxlength="255" required />
                             </td>
-                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Sửa</button></td>
+                            <td style="text-align: center; vertical-align: middle;"><a href="danhsachchitiet/{{ $ds->id }}/edit">Sửa</a></td>
+                            <!-- <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Sửa</button></td> -->
                         </tr>
                         @endforeach
                     </tbody>

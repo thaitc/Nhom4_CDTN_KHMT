@@ -24,7 +24,7 @@
 <header>
     <div class="header">
         <div class="logo">
-            <a href="{{url('/')}}" class="logo"><img src="/Quanlytruonghoc/logo.png" id="icon" alt="User Icon" /></a>
+            <a href="{{url('/')}}" class="logo"><img src="/thaitc/logo.png" id="icon" alt="User Icon" /></a>
         </div>
         <div style="float: right;" class="hello">
             @if (Route::has('login'))
