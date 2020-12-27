@@ -36,14 +36,14 @@
 	</button>
 </div>
 @endif
-<link href="/thaitc/resources/css/login.css" rel="stylesheet" >
+<link href="/Quanlysinhvien/resources/css/login.css" rel="stylesheet" >
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 		<!-- Tabs Titles -->
 
 		<!-- Icon -->
 		<div class="fadeIn first">
-			<img src="/thaitc/img/it.png" id="icon1" alt="User Icon" />
+			<img src="/Quanlysinhvien/img/it.png" id="icon1" alt="User Icon" />
 		</div>
 		<br/>
 		<!-- Login Form -->
@@ -64,7 +64,7 @@
 </div>
 <style>
 	body {
-		background: url('/Quanlytruonghoc/img/no.jpg');
+		background: url('/quanlysinhvien/img/no.jpg');
 	}
 
 	.panel {

@@ -27,24 +27,23 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Sinh viên</th>
                         <th>Môn học</th>
-                        <th>Tín chỉ</th>
                         <th>Giảng viên</th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
+                        <th>Tín chỉ</th>
+                        <th>Học phí</th>
+                        <th colspan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($listthoikhoabieu as $key => $thoikhoabieu)
                     <tr>
-                        <td style="text-align: center; vertical-align: middle;">{{ $key+1 }}</td>
-                        <td style="vertical-align: middle;"><a href="#">{{ $thoikhoabieu->sinhvien }}</a></td>
+                        <td style="text-align: center;">{{ $key+1 }}</td>
                         <td style="vertical-align: middle;"><a href="#">{{ $thoikhoabieu->tenmon }}</a></td>
-                        <td style="vertical-align: middle;">{{ $thoikhoabieu->tinchi }}</td>
                         <td style="vertical-align: middle;">{{ $thoikhoabieu->tengiangvien }}</td>
+                        <td style="vertical-align: middle;">{{ $thoikhoabieu->tinchi }}</td>                      
+                        <td style="vertical-align: middle;"><a>{{ (int)($thoikhoabieu->tinchi)*300000 }}đ</a></td>
                         <td style="text-align: center; vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/edit">Sửa</a></td>
-                        <td style="text-align: center; vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/delete">Xóa</a></td>
+                        <td style="text-align: center; vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/delete">Hủy</a></td>
                     </tr>
                     @endforeach
                 </tbody>

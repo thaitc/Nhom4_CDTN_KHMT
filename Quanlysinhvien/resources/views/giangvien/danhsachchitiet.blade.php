@@ -26,7 +26,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
-            <form action="{{url('danhsachlop/Công%20nghệ%20phần%20mềm')}}" method="post">
+            <form action="{{url('danhsachlop/danhsachchitiet')}}" method="post">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -34,7 +34,7 @@
                             <th>Tên sinh viên</th>
                             <th>Tên môn</th>
                             <th>Điểm</th>
-                            <th>Nhập điểm</th>
+                            <th colspan="2">Actinon</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +49,8 @@
                                 <input type="number" class="form-control" value="{{$ds->diem}}" id="diem" name="diem" placeholder="Nhập điểm" maxlength="255" required />
                             </td>
                             <td style="text-align: center; vertical-align: middle;"><a href="danhsachchitiet/{{ $ds->id }}/edit">Sửa</a></td>
-                            <!-- <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Sửa</button></td> -->
+                            <td style="text-align: center; vertical-align: middle;"><a href="danhsachchitiet/{{ $ds->id }}">Up</a></td>
+                             <!-- <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Sửa</button></td> -->
                         </tr>
                         @endforeach
                     </tbody>
@@ -121,7 +122,6 @@
                     last: "Trang cuối"
                 },
             }
-
         });
     });
 </script>

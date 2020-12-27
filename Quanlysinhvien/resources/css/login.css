@@ -1,7 +1,7 @@
 /* BASIC */
 
 html {
-    background: url('/Quanlytruonghoc/img/bia2.png');
+    background: url('/Quanlysinhvien/img/bia2.png');
 }
 
 body {
@@ -42,7 +42,7 @@ h2 {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: url('/Quanlytruonghoc/img/mo.jpg');
+    background: url('/Quanlysinhvien/img/mo.jpg');
     padding: 30px;
     width: 90%;
     max-width: 450px;

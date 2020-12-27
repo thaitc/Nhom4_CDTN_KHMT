@@ -62,6 +62,7 @@ class ThoikhoabieuController extends Controller
         }
         //Gán giá trị vào array
         $dataInsertToDatabase = array(
+            'masinhvien' =>Auth::user()->ma,
             'sinhvien'  => Auth::user()->name,
             'tenmon' => $tenmon,
             'tengiangvien' => $tengiangvien,
@@ -86,7 +87,7 @@ class ThoikhoabieuController extends Controller
         $getData = DB::table('thoikhoabieu as hs')
             ->leftJoin('monhoc as tenmon', 'hs.tenmon', '=', 'tenmon.tenmon')
             ->leftJoin('giangvien as tengiangvien', 'hs.tengiangvien', '=', 'tengiangvien.tengiangvien')
-            ->select('hs.id', 'hs.sinhvien', 'tenmon.tenmon', 'tengiangvien.tengiangvien', 'hs.tinchi')->where('hs.sinhvien', Auth::user()->name)->get();
+            ->select('hs.id', 'hs.sinhvien', 'tenmon.tenmon', 'tengiangvien.tengiangvien', 'hs.tinchi')->where('hs.masinhvien', Auth::user()->ma)->get();
 
         //Gọi đến file list.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên listhocsinh = $getData
         return view('thoikhoabieu.list')->with('listthoikhoabieu', $getData);

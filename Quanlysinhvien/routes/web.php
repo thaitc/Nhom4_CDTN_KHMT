@@ -25,6 +25,8 @@ Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLog
 //  });
  Route::get('/profile', 'ProfileController@index');
  Route::post('/profile', 'ProfileController@update');
+
+ Route::get('/diemhoctap', 'DiemhoctapController@index');
 //hocsinh
 Route::get('admin/sinhvien/create', 'SinhvienController@create'); // Thêm mới học sinh
 Route::post('admin/sinhvien/create', 'SinhvienController@store'); // Xử lý thêm mới học sinh
@@ -49,6 +51,7 @@ Route::get('admin/giangvien/{id}/delete', 'GiangvienController@destroy');
 
 Route::get('danhsachlop', 'GiangvienController@danhsachlop');
 Route::get('danhsachlop/danhsachchitiet', 'DanhsachlopController@index');
+Route::get('danhsachlop/danhsachchitiet/{id}', 'DanhsachlopController@update1');
 Route::get('danhsachlop/danhsachchitiet/{id}/edit', 'DanhsachlopController@edit');
 Route::post('danhsachlop/danhsachchitiet/update', 'DanhsachlopController@update');
 //

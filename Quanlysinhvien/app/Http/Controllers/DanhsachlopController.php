@@ -54,6 +54,26 @@ class DanhsachlopController extends Controller
         //Thực hiện chuyển trang
         return redirect('danhsachlop/danhsachchitiet');
     }
+    public function update1(Request $request)
+    {
+        //Cap nhat sua hoc sinh
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+
+        $updateData = DB::table('thoikhoabieu')->where('id', $request->id)->update([
+            'diem' => $request->diem,
+        ]);
+
+        //Kiểm tra lệnh update để trả về một thông báo
+        if ($updateData) {
+            Session::flash('success', 'Cập nhật điểm thành công!');
+        } else {
+            Session::flash('error', 'Sửa thất bại!');
+        }
+        $getData = DB::table('thoikhoabieu as gv')
+            ->select('gv.id', 'gv.sinhvien','gv.tenmon', 'gv.tengiangvien', 'gv.email','gv.tinchi','gv.diem')->where('gv.email',Auth::user()->email)->get();
+        //Thực hiện chuyển trang
+        return redirect('danhsachlop/danhsachchitiet')->with('listdanhsachlop', $getData);
+    }
     public function danhsachlop()
     {
         //Lấy danh sách học sinh từ database

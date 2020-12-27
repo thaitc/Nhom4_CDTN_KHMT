@@ -18,13 +18,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-
+        th {
+            text-align: center;
+        }
+        td{
+        text-align: center;
+        }
     </style>
 </head>
 <header>
     <div class="header">
         <div class="logo">
-            <a href="{{url('/')}}" class="logo"><img src="/thaitc/logo.png" id="icon" alt="User Icon" /></a>
+            <a href="{{url('/')}}" class="logo"><img src="/Quanlysinhvien/logo.png" id="icon" alt="User Icon" /></a>
         </div>
         <div style="float: right;" class="hello">
             @if (Route::has('login'))
@@ -53,6 +58,8 @@
         <a href="{{url('/profile')}}">Hồ sơ</a>
         @if(Auth::user()->level==3)
         <a href="{{url('/thoikhoabieu')}}">Đăng ký tín chỉ</a>
+        <a href="{{url('/diemhoctap')}}">Điểm học tập</a>
+        <a href="{{url('/xephang')}}">Xếp hạng</a>
         @endif
         @if( Auth::user()->level==2)
         <a href="{{url('/danhsachlop')}}">Lớp</a>
@@ -60,7 +67,7 @@
         @else
         @endauth
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars" aria-hidden="true"></i>
+            <i class="fa fa-bars" aria-hidden="true"></i>
         </a>
     </div>
     @endif

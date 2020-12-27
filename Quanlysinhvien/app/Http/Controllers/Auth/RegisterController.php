@@ -40,6 +40,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'ma'=>$data['ma'],
             'name' => $data['name'],
             'email' => $data['email'],
             'tenkhoa' =>'',
@@ -62,8 +63,9 @@ class RegisterController extends Controller
             if ($this->create($allRequest)) {
                 $email = $request['email'];
                 $name = $request['name'];
+                $masinhvien = $request['ma'];
                 $dataInsertToDatabase = array(
-                    'masinhvien'  => '',
+                    'masinhvien'  => $masinhvien,
                     'hoten' => $name,
                     'email' => $email,
                     'tenkhoa' => '',

@@ -71,6 +71,7 @@ class GiangvienController extends Controller
         $insertData = DB::table('giangvien')->insert($dataInsertToDatabase);
         if ($insertData) {
             $dataInsertToDatabase = array(
+                'ma'=> '',
                 'name' => $tengiangvien,
                 'email' => $email,
                 'password' => bcrypt($pass),
