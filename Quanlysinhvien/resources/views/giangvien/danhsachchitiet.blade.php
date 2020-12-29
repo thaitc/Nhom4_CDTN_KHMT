@@ -31,7 +31,7 @@
                             <th>Tên sinh viên</th>
                             <th>Tên môn</th>
                             <th>Điểm</th>
-                            <th colspan="2">Actinon</th>
+                            <th>Cập nhật điểm</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,8 +44,7 @@
                             <td style="vertical-align: middle;">
                                 <input type="number" class="form-control" value="{{$ds->diem}}" id="diem" name="diem" placeholder="Nhập điểm" maxlength="255" required />
                             </td>
-                            <td style="text-align: center; vertical-align: middle;"><a href="{{$ds->tenmon}}/{{ $ds->masinhvien }}/edit">Sửa</a></td>
-                            <td style="text-align: center; vertical-align: middle;"><a href="danhsachchitiet/{{ $ds->id }}">Up</a></td>
+                            <td style="text-align: center; vertical-align: middle;"><a href="{{$ds->tenmon}}/{{ $ds->masinhvien }}/edit">Up điểm</a></td>
                         </tr>
                         @endforeach
                     </tbody>

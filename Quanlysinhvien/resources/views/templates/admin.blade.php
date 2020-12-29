@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> @yield('title')</title>
+  <title> @yield('title','Admin')</title>
   <link href="/Quanlytruonghoc/resources/css/admin.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -170,19 +170,11 @@
           <a href="{{ url('/logout') }}">Logout</a>
         </div>
       </div>
+      
     </section>
-    <section class="grid">
     @section('content')
       @show
-      <article></article>
-      <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    </section>
+
     <footer class="page-footer">
       <small>Made with <span>❤</span> by <a href="#  " target="_blank">Thaitc</a>
       </small>

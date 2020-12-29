@@ -23,7 +23,9 @@
     <div class="col-md-6">
         Điểm TB chung: {{$diemtb}} |
         Xếp loại:
-        <?php if ((float)($diemtb) < 6.5) { ?> Trung bình <?php } ?>
+        <?php if ((float)($diemtb) == null) { ?> Null <?php } ?>
+        <?php if ((float)($diemtb) < 5 && (float)($diemtb) >0) { ?> Yếu <?php } ?>
+        <?php if ((float)($diemtb) < 6.5 && (float)($diemtb) >=5) { ?> Trung bình <?php } ?>
         <?php if ((float)($diemtb) >= 8) { ?> Giỏi <?php } ?>
         <?php if ((float)($diemtb) < 8 && (float)($diemtb) >= 6.5) { ?> Khá <?php } ?>
     </div>

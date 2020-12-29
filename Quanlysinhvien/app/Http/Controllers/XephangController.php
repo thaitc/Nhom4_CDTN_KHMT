@@ -14,7 +14,7 @@ class XephangController extends Controller
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
         $getData = DB::table('thoikhoabieu')->select('sinhvien', 'masinhvien')->distinct('masinhvien')->where('tenkhoa',  Auth::user()->tenkhoa)->orderByDesc('diem')->get();
         $diemtb = DB::table('thoikhoabieu')
-            ->select(DB::raw('avg(diem) as diem'))
+            ->select(DB::raw('avg(diem) as diem'))->where('tenkhoa',  Auth::user()->tenkhoa)
             ->groupBy('masinhvien')->orderByDesc('diem')
             ->get();
         return view('xephang', ['getSinhVienById' => $getData, 'dskhoa' => $dskhoa, 'diemtb' => $diemtb]);

@@ -284,7 +284,7 @@
             @endif
             @endauth
             @endif
-            <li><a href="{{url('/')}}">Liên hệ</a></li>
+            <li><a href="{{url('/lienhe')}}">Liên hệ</a></li>
         </ul>
     </nav>
     <br />

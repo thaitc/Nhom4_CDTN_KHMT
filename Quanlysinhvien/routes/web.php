@@ -60,3 +60,6 @@ Route::get('thoikhoabieu/create', 'ThoikhoabieuController@create');
 Route::post('thoikhoabieu/create', 'ThoikhoabieuController@store');
 Route::get('thoikhoabieu/{id}/delete', 'ThoikhoabieuController@destroy');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/lienhe', 'LienheController@index');
+Route::post('/lienhe/update', 'LienheController@index');

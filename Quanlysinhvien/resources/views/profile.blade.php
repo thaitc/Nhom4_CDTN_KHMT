@@ -1,7 +1,27 @@
 @extends('welcome')
+@section('title','Thông tin cá nhân')
 @section('content')
+
 @if (Route::has('login'))
 @auth
+@if ( Session::has('success') )
+<div class="alert alert-success alert-dismissible" role="alert">
+    <strong>{{ Session::get('success') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+@endif
+@if ( Session::has('error') )
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <strong>{{ Session::get('error') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+@endif
 <form action="{{ url('/profile') }}" method="post">
     <input type="hidden" id="_token" name="_token" value="{!! csrf_token() !!}" />
     <input type="hidden" id="id" name="id" value="{!! $getSinhVienById[0]->id !!}" />
@@ -15,11 +35,11 @@
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Email" maxlength="15" value="{{ $getSinhVienById[0]->email }}" required />
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email" maxlength="200" value="{{ $getSinhVienById[0]->email }}" required />
     </div>
     <div class="form-group">
         <label for="email">Địa chỉ</label>
-        <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ" maxlength="15" value="{{ $getSinhVienById[0]->diachi }}" required />
+        <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ" maxlength="200" value="{{ $getSinhVienById[0]->diachi }}" required />
     </div>
     <div class="form-group">
         <label for="khoi">Chọn khoa</label>

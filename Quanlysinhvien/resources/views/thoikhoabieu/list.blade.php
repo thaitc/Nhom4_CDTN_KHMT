@@ -31,7 +31,6 @@
                         <th>Giảng viên</th>
                         <th>Tín chỉ</th>
                         <th>Học phí</th>
-                        <th>Sửa</th>
                         <th>Hủy</th>
                     </tr>
                 </thead>
@@ -43,7 +42,6 @@
                         <td style="vertical-align: middle;">{{ $thoikhoabieu->tengiangvien }}</td>
                         <td style="vertical-align: middle;">{{ $thoikhoabieu->tinchi }}</td>                      
                         <td style="vertical-align: middle;"><a>{{ (int)($thoikhoabieu->tinchi)*300000 }}đ</a></td>
-                        <td style="text-align: center; vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/edit">Sửa</a></td>
                         <td style="text-align: center; vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/delete">Hủy</a></td>
                     </tr>
                     @endforeach

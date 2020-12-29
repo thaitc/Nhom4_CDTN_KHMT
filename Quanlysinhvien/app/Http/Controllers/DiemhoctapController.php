@@ -14,16 +14,12 @@ class DiemhoctapController extends Controller
     {
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
         $getData = DB::table('thoikhoabieu')->select('id', 'tenmon', 'diem')->where('masinhvien',  Auth::user()->ma)->get();
-        $diemtb = DB::table('thoikhoabieu')->where('masinhvien',Auth::user()->ma)->avg('diem');
-        //Gọi đến file edit.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên getHocSinhById = $getData và dskhoi = $dskhoi
-        return view('diemhoctap', ['getSinhVienById' => $getData, 'dskhoa' => $dskhoa,'diemtb' => $diemtb]);
+        $diemtb = DB::table('thoikhoabieu')->where('masinhvien', Auth::user()->ma)->avg('diem');
+        return view('diemhoctap', ['getSinhVienById' => $getData, 'dskhoa' => $dskhoa, 'diemtb' => $diemtb]);
     }
     public function update(Request $request)
     {
-        //Cap nhat sua hoc sinh
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-
-        //Kiểm tra giá trị tenhocsinh, sodienthoai, khoi
         $this->validate(
             $request,
             [
@@ -41,9 +37,6 @@ class DiemhoctapController extends Controller
                 'tenkhoa.required' => 'Bạn chưa chọn khoa!',
             ]
         );
-
-
-        //Thực hiện câu lệnh update với các giá trị $request trả về
         $masinhvien = $request['masinhvien'];
         $hoten = $request['hoten'];
         $diachi = $request['diachi'];
@@ -59,15 +52,11 @@ class DiemhoctapController extends Controller
         $updateData = DB::table('users')->where('email', Auth::user()->email)->update([
             'tenkhoa' => $tenkhoa,
         ]);
-
-        //Kiểm tra lệnh update để trả về một thông báo
         if ($updateData) {
             Session::flash('success', 'Sửa học sinh thành công!');
         } else {
             Session::flash('error', 'Sửa thất bại!');
         }
-
-        //Thực hiện chuyển trang
         return redirect('profile');
     }
 }

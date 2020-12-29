@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class SinhvienController extends Controller
@@ -17,9 +17,8 @@ class SinhvienController extends Controller
     {
         if (!$this->userCan('super_admin')) {
             abort(403);
-        }
-        else
-        $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
+        } else
+            $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
         return view('sinhvien.create')->with('dskhoa', $dskhoa);
     }
     public function store(Request $request)
@@ -40,7 +39,7 @@ class SinhvienController extends Controller
                 'tenkhoa.required' => 'Bạn chưa chọn khoa!',
                 'diachi.required' => 'Bạn chưa nhập địa chỉ!',
             ]
-        );   
+        );
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $allRequest  = $request->all();
         $masinhvien  = $allRequest['masinhvien'];
@@ -48,7 +47,7 @@ class SinhvienController extends Controller
         $email = $allRequest['email'];
         $tenkhoa = $allRequest['tenkhoa'];
         $diachi = $allRequest['diachi'];
-        
+
         $dataInsertToDatabase = array(
             'masinhvien'  => $masinhvien,
             'hoten' => $hoten,
@@ -58,45 +57,30 @@ class SinhvienController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         );
-
-        //Insert vào bảng tbl_hocsinh
         $insertData = DB::table('sinhvien')->insert($dataInsertToDatabase);
-        // if ($insertData) {
-        // 	Session::flash('success', 'Thêm mới học sinh thành công!');
-        // }else {                        
-        // 	Session::flash('error', 'Thêm thất bại!');
-        // }
-
-        //Thực hiện chuyển trang
+        if ($insertData) {
+            Session::flash('success', 'Thêm mới sinh viên thành công!');
+        } else {
+            Session::flash('error', 'Thêm thất bại!');
+        }
         return redirect('admin/sinhvien');
     }
     public function index()
     {
-        //Lấy danh sách học sinh từ database
         $getData = DB::table('sinhvien as sv')
             ->leftJoin('khoa as tenkhoa', 'sv.tenkhoa', '=', 'tenkhoa.tenkhoa')
             ->select('sv.id', 'sv.masinhvien', 'sv.hoten', 'sv.email', 'sv.diachi', 'tenkhoa.tenkhoa')->get();
-
-        //Gọi đến file list.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên listhocsinh = $getData
         return view('sinhvien.list')->with('listsinhvien', $getData);
     }
     public function edit($id)
     {
-        //Lấy dữ liệu bảng tbl_khoi từ Database
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
-
-        //Lấy dữ liệu từ Database với các trường được lấy và với điều kiện id = $id
         $getData = DB::table('sinhvien')->select('id', 'masinhvien', 'hoten', 'email', 'diachi', 'tenkhoa')->where('id', $id)->get();
-
-        //Gọi đến file edit.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên getHocSinhById = $getData và dskhoi = $dskhoi
         return view('sinhvien.edit', ['getSinhVienById' => $getData, 'dskhoa' => $dskhoa]);
     }
     public function update(Request $request)
     {
-        //Cap nhat sua hoc sinh
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-
-        //Kiểm tra giá trị tenhocsinh, sodienthoai, khoi
         $this->validate(
             $request,
             [
@@ -114,9 +98,6 @@ class SinhvienController extends Controller
                 'tenkhoa.required' => 'Bạn chưa chọn khoa!',
             ]
         );
-
-        
-        //Thực hiện câu lệnh update với các giá trị $request trả về
         $updateData = DB::table('sinhvien')->where('id', $request->id)->update([
             'masinhvien' => $request->masinhvien,
             'hoten' => $request->hoten,
@@ -125,31 +106,21 @@ class SinhvienController extends Controller
             'tenkhoa' => $request->tenkhoa,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-
-        //Kiểm tra lệnh update để trả về một thông báo
-        // if ($updateData) {
-        //     Session::flash('success', 'Sửa học sinh thành công!');
-        // } else {
-        //     Session::flash('error', 'Sửa thất bại!');
-        // }
-
-        //Thực hiện chuyển trang
+        if ($updateData) {
+            Session::flash('success', 'Sửa sinh viên thành công!');
+        } else {
+            Session::flash('error', 'Sửa thất bại!');
+        }
         return redirect('admin/sinhvien');
     }
     public function destroy($id)
     {
-        //Xoa hoc sinh
-        //Thực hiện câu lệnh xóa với giá trị id = $id trả về
         $deleteData = DB::table('sinhvien')->where('id', '=', $id)->delete();
-
-        //Kiểm tra lệnh delete để trả về một thông báo
-        // if ($deleteData) {
-        //     Session::flash('success', 'Xóa học sinh thành công!');
-        // } else {
-        //     Session::flash('error', 'Xóa thất bại!');
-        // }
-
-        //Thực hiện chuyển trang
+        if ($deleteData) {
+            Session::flash('success', 'Xóa sinh viên thành công!');
+        } else {
+            Session::flash('error', 'Xóa thất bại!');
+        }
         return redirect('admin/sinhvien');
     }
 }
