@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2020 lúc 05:52 PM
+-- Thời gian đã tạo: Th12 29, 2020 lúc 08:25 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -88,6 +88,26 @@ CREATE TABLE `khoa` (
 INSERT INTO `khoa` (`id`, `tenkhoa`) VALUES
 (1, 'Công nghệ thông tin'),
 (2, 'Toán');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `lienhe`
+--
+
+CREATE TABLE `lienhe` (
+  `id` int(10) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noidung` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lienhe`
+--
+
+INSERT INTO `lienhe` (`id`, `email`, `noidung`) VALUES
+(1, 'thaitc@hnue.edu.vn', 'Tôi muốn có tài khoản fb'),
+(2, 'ducvd@hnue.edu.vn', 'Tôi là Vũ Danh Đức');
 
 -- --------------------------------------------------------
 
@@ -190,8 +210,9 @@ INSERT INTO `monhoc` (`id`, `tenmon`, `tenkhoa`, `tinchi`, `created_at`, `update
 (2, 'Lập trình mạng 2', 'Công nghệ thông tin', 2, '2020-12-27 02:54:26', '2020-12-27 02:54:26'),
 (3, 'Chuyên đề tốt nghiệp KTMT&Mạng', 'Công nghệ thông tin', 4, '2020-12-27 07:32:23', '2020-12-27 07:32:23'),
 (4, 'Lập trình Java', 'Công nghệ thông tin', 2, '2020-12-27 07:32:49', '2020-12-27 07:32:49'),
-(5, 'Toán cao cấp', 'Toán', 3, '2020-12-27 07:33:30', '2020-12-27 07:33:30'),
-(6, 'Hình học cơ bản', 'Toán', 3, '2020-12-27 07:33:54', '2020-12-27 07:33:54');
+(5, 'Toán cao cấp', 'Toán', 4, '2020-12-27 07:33:30', '2020-12-29 19:01:43'),
+(6, 'Hình học cơ bản', 'Toán', 3, '2020-12-27 07:33:54', '2020-12-27 07:33:54'),
+(7, 'Lập trình mạng 1', 'Công nghệ thông tin', 2, '2020-12-29 19:01:00', '2020-12-29 19:01:00');
 
 -- --------------------------------------------------------
 
@@ -285,7 +306,7 @@ CREATE TABLE `sinhvien` (
 INSERT INTO `sinhvien` (`id`, `masinhvien`, `hoten`, `email`, `tenkhoa`, `diachi`, `created_at`, `updated_at`) VALUES
 (2, '675105070', 'Nguyễn Văn Nghiệp', 'nghiep@hnue', 'Công nghệ thông tin', 'Hải Dương', '2020-12-26 19:51:34', '2020-12-27 02:52:17'),
 (3, '675105079', 'Trương Công Thái', 'thai@hnue', 'Công nghệ thông tin', 'Nghệ An', '2020-12-26 20:35:15', '2020-12-29 15:44:18'),
-(4, '675105080', 'Trương Công Thái', 'thai@ls', 'Công nghệ thông tin', 'Nghệ An', '2020-12-26 23:31:45', '2020-12-27 06:35:34');
+(5, '695105001', 'Nguyễn Khắc Hiệp', 'hiep@hnue', 'Toán', 'Quốc Oai - Hà Nội', '2020-12-29 11:30:27', '2020-12-29 18:48:22');
 
 -- --------------------------------------------------------
 
@@ -328,7 +349,8 @@ INSERT INTO `thoikhoabieu` (`id`, `masinhvien`, `sinhvien`, `tenmon`, `tengiangv
 (2, '675105078', 'Nguyễn Văn Nghiệp', 'Lập trình mạng 2', 'Phạm Thị Anh Lê', 'le@hnue.edu.vn', 2, 'Công nghệ thông tin', 6),
 (3, '675105079', 'Trương Công Thái', 'Công nghệ phần mềm', 'Nguyễn Duy Hải', 'haind@hnue.edu.vn', 3, 'Công nghệ thông tin', 5),
 (4, '675105079', 'Trương Công Thái', 'Lập trình mạng 2', 'Phạm Thị Anh Lê', 'le@hnue.edu.vn', 2, 'Công nghệ thông tin', 8),
-(5, '675105080', 'Trương Công Thái', 'Công nghệ phần mềm', 'Nguyễn Duy Hải', 'haind@hnue.edu.vn', 3, 'Công nghệ thông tin', 4);
+(5, '675105080', 'Trương Công Thái', 'Công nghệ phần mềm', 'Nguyễn Duy Hải', 'haind@hnue.edu.vn', 3, 'Công nghệ thông tin', 4),
+(9, '695105001', 'Nguyễn Khắc Hiệp', 'Hình học cơ bản', 'Kiều Trung Thủy', 'thuy@hnue', 3, 'Toán', 9);
 
 -- --------------------------------------------------------
 
@@ -382,7 +404,9 @@ INSERT INTO `users` (`id`, `role_id`, `ma`, `name`, `email`, `avatar`, `tenkhoa`
 (9, NULL, '675105078', 'Nguyễn Văn Nghiệp', 'nghiep@hnue', 'users/default.png', 'Công nghệ thông tin', NULL, '$2y$10$ATCjDW69ZOjBfj/py7rrL.yiJXb2TZCEFZERdxiUmSHcfEjbzlbpO', NULL, NULL, '2020-12-26 19:51:34', '2020-12-26 19:51:34', 3),
 (10, NULL, '675105079', 'Trương Công Thái', 'thai@hnue', 'users/default.png', 'Công nghệ thông tin', NULL, '$2y$10$RQe1i.Ttb5NS4pk8PORT0OrpVsGogeAmqh6Uhfu0LeluaPu8gFCgu', NULL, NULL, '2020-12-26 20:35:15', '2020-12-26 20:35:15', 3),
 (11, NULL, '675105080', 'Trương Công Thái', 'thai@ls', 'users/default.png', 'Công nghệ thông tin', NULL, '$2y$10$T3MB5ETJ4upQAM6GABcFnuS6I7ZW5q.hbN7N0VEo6cpCsbm3QTJ.a', NULL, NULL, '2020-12-26 23:31:44', '2020-12-26 23:31:44', 3),
-(12, NULL, '', 'Kiều Trung Thủy', 'thuy@hnue', 'users/default.png', 'Toán', NULL, '$2y$10$EqwbLPLm1xWJt7c5zFzUYe.vqb2C0aPqdqf4l1azEksUg2TL7bhMC', NULL, NULL, '2020-12-27 07:37:14', NULL, 2);
+(12, NULL, '', 'Kiều Trung Thủy', 'thuy@hnue', 'users/default.png', 'Toán', NULL, '$2y$10$EqwbLPLm1xWJt7c5zFzUYe.vqb2C0aPqdqf4l1azEksUg2TL7bhMC', NULL, NULL, '2020-12-27 07:37:14', NULL, 2),
+(13, NULL, '695105001', 'Nguyễn Khắc Hiệp', 'hiep@hnue', 'users/default.png', 'Toán', NULL, '$2y$10$4zIR5dl041kPk0rF2sagz.RpYMnKtO1bnOBCe6UJcff16ASCUL5Ra', NULL, NULL, '2020-12-29 11:30:26', '2020-12-29 11:30:26', 3),
+(15, NULL, '', 'Test', 'test@mail1', 'users/default.png', 'Toán', NULL, '$2y$10$jwm1XOvBaFpHzQOjgIcUwOihphzmooOmvjPmYEibTcdxNi/4qDfI6', NULL, NULL, '2020-12-29 18:50:45', '2020-12-29 18:59:36', 2);
 
 -- --------------------------------------------------------
 
@@ -418,6 +442,12 @@ ALTER TABLE `giangvien`
 -- Chỉ mục cho bảng `khoa`
 --
 ALTER TABLE `khoa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `lienhe`
+--
+ALTER TABLE `lienhe`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -536,12 +566,18 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT cho bảng `giangvien`
 --
 ALTER TABLE `giangvien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `khoa`
 --
 ALTER TABLE `khoa`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `lienhe`
+--
+ALTER TABLE `lienhe`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -566,7 +602,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `monhoc`
 --
 ALTER TABLE `monhoc`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `permissions`
@@ -590,7 +626,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT cho bảng `sinhvien`
 --
 ALTER TABLE `sinhvien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_hocsinh`
@@ -602,7 +638,7 @@ ALTER TABLE `tbl_hocsinh`
 -- AUTO_INCREMENT cho bảng `thoikhoabieu`
 --
 ALTER TABLE `thoikhoabieu`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `translations`
@@ -614,7 +650,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
