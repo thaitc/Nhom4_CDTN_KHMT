@@ -172,16 +172,16 @@
       </div>
     </section>
     <section class="grid">
-      @section('content')
+    @section('content')
       @show
-      <!-- <article></article> -->
-      <!-- <article></article>
+      <article></article>
+      <article></article>
     <article></article>
     <article></article>
     <article></article>
     <article></article>
     <article></article>
-    <article></article> -->
+    <article></article>
     </section>
     <footer class="page-footer">
       <small>Made with <span>❤</span> by <a href="#  " target="_blank">Thaitc</a>

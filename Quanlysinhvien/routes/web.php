@@ -27,6 +27,7 @@ Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLog
  Route::post('/profile', 'ProfileController@update');
 
  Route::get('/diemhoctap', 'DiemhoctapController@index');
+ Route::get('/xephang', 'XephangController@index');
 //hocsinh
 Route::get('admin/sinhvien/create', 'SinhvienController@create'); // Thêm mới học sinh
 Route::post('admin/sinhvien/create', 'SinhvienController@store'); // Xử lý thêm mới học sinh

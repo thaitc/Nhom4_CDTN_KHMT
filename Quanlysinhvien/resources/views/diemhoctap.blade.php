@@ -67,4 +67,25 @@
     <img class="modal-content" id="img01">
     <div id="caption"></div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            language: {
+                lengthMenu: "Số bản ghi trên 1 trang _MENU_ ",
+                search: "Tìm kiếm",
+                info: "Tổng cộng: <b>_TOTAL_</b> bản ghi",
+                infoFiltered:'',
+                zeroRecords: "Không tìm thấy bản ghi nào",
+                infoEmpty: "Không có dữ liệu ",
+                paginate: {
+                    first: "Trang đầu",
+                    previous: "Trang trước",
+                    next: "Trang sau",
+                    last: "Trang cuối"
+                },
+            }
+
+        });
+    });
+</script>
 @endsection
