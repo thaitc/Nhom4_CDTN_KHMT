@@ -12,6 +12,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
         $getData = DB::table('sinhvien')->select('id', 'masinhvien', 'hoten', 'email', 'diachi', 'tenkhoa')->where('email',  Auth::user()->email)->get();
 

@@ -2,9 +2,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 // Đăng ký thành viên
 Route::get('register', 'Auth\RegisterController@getRegister');
@@ -20,20 +19,19 @@ Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLog
 
  Route::get('admin', 'AdminController@index');
 
-//  Route::get('/profile', function(){
-//      return view('profile');
-//  });
  Route::get('/profile', 'ProfileController@index');
  Route::post('/profile', 'ProfileController@update');
 
  Route::get('/diemhoctap', 'DiemhoctapController@index');
  Route::get('/xephang', 'XephangController@index');
+ Route::get('/danhgia', 'DanhgiaController@index');
+ Route::get('/danhgia/{id}/edit', 'DanhgiaController@edit');
 //hocsinh
-Route::get('admin/sinhvien/create', 'SinhvienController@create'); // Thêm mới học sinh
-Route::post('admin/sinhvien/create', 'SinhvienController@store'); // Xử lý thêm mới học sinh
-Route::get('admin/sinhvien/{id}/edit', 'SinhvienController@edit'); // Sửa học sinh
-Route::post('admin/sinhvien/update', 'SinhvienController@update'); // Xử lý sửa học sinh
-Route::get('admin/sinhvien/{id}/delete', 'SinhvienController@destroy'); // Xóa học sinh
+Route::get('admin/sinhvien/create', 'SinhvienController@create');
+Route::post('admin/sinhvien/create', 'SinhvienController@store');
+Route::get('admin/sinhvien/{id}/edit', 'SinhvienController@edit');
+Route::post('admin/sinhvien/update', 'SinhvienController@update');
+Route::get('admin/sinhvien/{id}/delete', 'SinhvienController@destroy');
 Route::get('admin/sinhvien', 'SinhvienController@index');
 //
 Route::get('admin/monhoc', 'MonhocController@index');
@@ -51,12 +49,14 @@ Route::post('admin/giangvien/update', 'GiangvienController@update');
 Route::get('admin/giangvien/{id}/delete', 'GiangvienController@destroy');
 
 Route::get('danhsachlop', 'GiangvienController@danhsachlop');
-Route::get('danhsachlop/danhsachchitiet', 'DanhsachlopController@index');
-Route::get('danhsachlop/danhsachchitiet/{id}', 'DanhsachlopController@update1');
-Route::get('danhsachlop/danhsachchitiet/{id}/edit', 'DanhsachlopController@edit');
-Route::post('danhsachlop/danhsachchitiet/update', 'DanhsachlopController@update');
+Route::get('danhsachlop/{tenmon}', 'DanhsachlopController@index');
+// Route::get('danhsachlop/danhsachchitiet/{id}', 'DanhsachlopController@update1');
+Route::get('danhsachlop/{tenmon}/{masinhvien}/edit', 'DanhsachlopController@edit');
+Route::post('danhsachlop/update', 'DanhsachlopController@update');
+Route::post('danhsachlop/up', 'DanhsachlopController@update1');
 //
 Route::get('/thoikhoabieu', 'ThoikhoabieuController@index');
 Route::get('thoikhoabieu/create', 'ThoikhoabieuController@create');
 Route::post('thoikhoabieu/create', 'ThoikhoabieuController@store');
+Route::get('thoikhoabieu/{id}/delete', 'ThoikhoabieuController@destroy');
 Route::get('/home', 'HomeController@index')->name('home');

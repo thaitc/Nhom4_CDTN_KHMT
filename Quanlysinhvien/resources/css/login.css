@@ -1,12 +1,13 @@
 /* BASIC */
 
-html {
-    background: url('/Quanlysinhvien/img/bia2.png');
-}
-
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
+    background: url('/quanlysinhvien/img/no.jpg');
+}
+
+html {
+    background: url('/quanlysinhvien/img/no.jpg');
 }
 
 a {

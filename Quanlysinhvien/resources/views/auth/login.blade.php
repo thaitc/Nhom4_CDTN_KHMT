@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title','Trang quản lý')
+@section('title','Đăng nhập')
 @section('content')
 <?php //Hiển thị thông báo thành công
 ?>

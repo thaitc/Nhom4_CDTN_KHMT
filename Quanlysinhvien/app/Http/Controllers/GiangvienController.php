@@ -191,43 +191,6 @@ class GiangvienController extends Controller
         //Gọi đến file list.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên listhocsinh = $getData
         return view('giangvien.danhsachlop')->with('listdanhsachlop', $getData);
     }
-    public function danhsachchitiet($tenmon)
-    {
-        $getMon = DB::table('thoikhoabieu')->select('tenmon')->distinct()->where('email', Auth::user()->email)->get();
-        //Lấy dữ liệu từ Database với các trường được lấy và với điều kiện id = $id
-        $getData = DB::table('thoikhoabieu as gv')->select('gv.id', 'gv.sinhvien', 'gv.tenmon', 'gv.tinchi')->where('email', Auth::user()->email)->where('tenmon', $tenmon)->get();
-        //$getData = DB::table('giangvien')->select('id', 'tengiangvien', 'email', 'diachi', 'tenkhoa')->where('tenmon', $tenmon)->get();
-       
-        $cars=array("Volvo","BMW","Toyota");
-        var_dump( $cars );
-        //Gọi đến file edit.blade.php trong thư mục "resources/views/hocsinh" với giá trị gửi đi tên getHocSinhById = $getData và dskhoi = $dskhoi
-        return view('giangvien.danhsachchitiet', ['dslop' => $getData,'getmon'=>$getMon]);
-    }
-    public function updatediem(Request $request)
-    {
-        // foreach ($postals as $postal){
-        //     $address = $geocoder->getCoordinatesForAddress($postal->postal_code);
-        //     DB::table('schools')
-        //             ->where('postal', $postal->postal_code)
-        //             ->update(['lat' => $address['lat'], 'lng' => $address['lng']]);
-        // }
 
-        //Cap nhat sua hoc sinh
-        date_default_timezone_set("Asia/Ho_Chi_Minh");
-        $diem = $request['diem'];
-        $diemm = array([
-            'diem' => $diem,
-        ]);
-        var_dump($diemm);
-        $updateData = DB::table('thoikhoabieu')->select('sinhvien');
-        //Kiểm tra lệnh update để trả về một thông báo
-        if ($updateData) {
-            Session::flash('success', 'Cập nhật thành công!');
-        } else {
-            Session::flash('error', 'Cập nhật thất bại!');
-        }
-        $getMon = DB::table('thoikhoabieu')->select('tenmon')->distinct()->where('email', Auth::user()->email)->get();
-        //Thực hiện chuyển trang
-        return redirect('giangvien.danhsachchitiet', ['getmon'=>$getMon]);
-    }
+    
 }

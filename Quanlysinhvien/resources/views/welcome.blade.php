@@ -8,15 +8,17 @@
     <link href="/Quanlytruonghoc/resources/css/footer.css" rel="stylesheet">
     <link href="/Quanlytruonghoc/resources/css/header.css" rel="stylesheet">
     <link href="/Quanlytruonghoc/resources/css/menu.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+
     <link href="/Quanlytruonghoc/resources/css/admin.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="//path/to/font-awesome/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,8 +26,217 @@
         th {
             text-align: center;
         }
-        td{
-        text-align: center;
+
+        td {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 60px;
+            line-height: 70px;
+            font-family: 'roboto', sans-serif;
+        }
+
+        #container {
+            margin: 0 auto;
+            max-width: 890px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .toggle,
+        [id^=drop] {
+            display: none;
+        }
+
+        nav {
+            margin: 0;
+            padding: 0;
+            background-color: #17568C;
+        }
+
+        #logo {
+            display: block;
+            padding: 0 30px;
+            float: left;
+            font-size: 20px;
+            line-height: 60px;
+        }
+
+        nav:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        nav ul {
+            float: left;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: relative;
+        }
+
+        nav ul li {
+            margin: 0px;
+            display: inline-block;
+            
+            background-color: #17568C;
+        }
+
+        nav a {
+            display: block;
+            padding: 0 20px;
+            color: #FFF;
+            font-size: 20px;
+            line-height: 60px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: none;
+        }
+
+        nav ul li ul li:hover {
+            background: rgba(255, 255, 255, 0.582);
+            ;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.582);
+            ;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 60px;
+        }
+
+        nav ul li:hover>ul {
+            display: inherit;
+        }
+
+        nav ul ul li {
+            width: 170px;
+            float: none;
+            display: list-item;
+            position: relative;
+        }
+
+        nav ul ul ul li {
+            position: relative;
+            top: -60px;
+            left: 170px;
+        }
+
+        li>a:after {
+            content: ' +';
+        }
+
+        li>a:only-child:after {
+            content: '';
+        }
+
+
+        /* Media Queries
+  --------------------------------------------- */
+
+        @media all and (max-width: 768px) {
+            #logo {
+                display: block;
+                padding: 0;
+                width: 100%;
+                text-align: center;
+                float: none;
+            }
+
+            nav {
+                margin: 0;
+            }
+
+            .toggle+a,
+            .menu {
+                display: none;
+            }
+
+            .toggle {
+                display: block;
+                background-color: #254441;
+                padding: 0 20px;
+                color: #FFF;
+                font-size: 22px;
+                font-weight: bold;
+                line-height: 60px;
+                text-decoration: none;
+                border: none;
+            }
+
+            .toggle:hover {
+                background-color: rgba(255, 255, 255, 0.582);
+                ;
+            }
+
+            [id^=drop]:checked+ul {
+                display: block;
+            }
+
+            nav ul li {
+                display: block;
+                width: 100%;
+            }
+
+            nav ul ul .toggle,
+            nav ul ul a {
+                padding: 0 40px;
+            }
+
+            nav ul ul ul a {
+                padding: 0 80px;
+            }
+
+            nav a:hover,
+            nav ul ul ul a {
+                background-color: rgba(255, 255, 255, 0.582);
+                ;
+            }
+
+            nav ul li ul li .toggle,
+            nav ul ul a {
+                background-color: rgba(255, 255, 255, 0.582);
+                ;
+            }
+
+            nav ul ul {
+                float: none;
+                position: static;
+                color: #ffffff;
+            }
+
+            nav ul ul li:hover>ul,
+            nav ul li:hover>ul {
+                display: none;
+            }
+
+            nav ul ul li {
+                display: block;
+                width: 100%;
+            }
+
+            nav ul ul ul li {
+                position: static;
+            }
+        }
+
+        @media all and (max-width: 330px) {
+            nav ul li {
+                display: block;
+                width: 94%;
+            }
         }
     </style>
 </head>
@@ -54,41 +265,39 @@
 </header>
 
 <body>
-    @if (Route::has('login'))
-    <div class="topnav" style="padding-left: 10%;" id="myTopnav">
-        @auth
-        <a href="{{url('/')}}" class="active">Trang chủ</a>
-        <a href="{{url('/profile')}}">Hồ sơ</a>
-        @if(Auth::user()->level==3)
-        <a href="{{url('/thoikhoabieu')}}">Đăng ký tín chỉ</a>
-        <a href="{{url('/diemhoctap')}}">Điểm học tập</a>
-        <a href="{{url('/xephang')}}">Xếp hạng</a>
-        @endif
-        @if( Auth::user()->level==2)
-        <a href="{{url('/danhsachlop')}}">Lớp</a>
-        @endif
-        @else
-        @endauth
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </a>
-    </div>
-    @endif
+    <nav style="padding-left: 9%;">
+        <label for="drop" class="toggle">&#8801; Menu</label>
+        <input type="checkbox" id="drop" />
+        <ul class="menu">
+            <li><a href="{{url('/')}}">Trang chủ</a></li>
+            @if (Route::has('login'))
+            @auth
+            @if(Auth::user()->level==3)
+            <li><a href="{{url('/profile')}}">Hồ sơ</a></li>
+            <li><a href="{{url('/thoikhoabieu')}}">Đăng ký môn học</a></li>
+            <li><a href="{{url('/diemhoctap')}}">Điểm</a></li>
+            <li><a href="{{url('/xephang')}}">Xếp hạng</a></li>
+            <li><a href="{{url('/danhgia')}}">Đánh giá giảng viên</a></li>
+            @endif
+            @if( Auth::user()->level==2)
+            <li><a href="{{url('danhsachlop')}}">Lớp dạy</a></li>
+            @endif
+            @endauth
+            @endif
+            <li><a href="{{url('/')}}">Liên hệ</a></li>
+        </ul>
+    </nav>
     <br />
     <div class="contai">
         @section('content')
         @show
     </div>
 </body>
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-</script>
-
+    </br/>
+<footer>
+<div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright:
+    <a class="text-light" href="http://fitel.hnue.edu.vn/"><b>thaitc@hnue.edu.vn</b></a>
+</div>
+</footer>
 </html>

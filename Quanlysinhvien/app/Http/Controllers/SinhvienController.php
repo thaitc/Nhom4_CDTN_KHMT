@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Http\Request;
@@ -20,18 +19,14 @@ class SinhvienController extends Controller
             abort(403);
         }
         else
-        //Lấy danh sách bảng khối
         $dskhoa = DB::table('khoa')->select('id', 'tenkhoa')->get();
-        //Hiển thị trang thêm học sinh
         return view('sinhvien.create')->with('dskhoa', $dskhoa);
     }
     public function store(Request $request)
     {
-        //Kiểm tra giá trị tenhocsinh, sodienthoai, khoi
         $this->validate(
             $request,
             [
-                //Kiểm tra giá trị rỗng
                 'masinhvien' => 'required',
                 'hoten' => 'required',
                 'email' => 'required',
@@ -39,7 +34,6 @@ class SinhvienController extends Controller
                 'diachi' => 'required',
             ],
             [
-                //Tùy chỉnh hiển thị thông báo
                 'masinhvien.required' => 'Bạn chưa nhập mã sinh viên!',
                 'hoten.required' => 'Bạn chưa nhập họ tên!',
                 'email.required' => 'Bạn chưa nhập email!',
@@ -47,7 +41,6 @@ class SinhvienController extends Controller
                 'diachi.required' => 'Bạn chưa nhập địa chỉ!',
             ]
         );   
-        //Lấy giá trị học sinh đã nhập
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $allRequest  = $request->all();
         $masinhvien  = $allRequest['masinhvien'];
@@ -55,8 +48,7 @@ class SinhvienController extends Controller
         $email = $allRequest['email'];
         $tenkhoa = $allRequest['tenkhoa'];
         $diachi = $allRequest['diachi'];
-
-        //Gán giá trị vào array
+        
         $dataInsertToDatabase = array(
             'masinhvien'  => $masinhvien,
             'hoten' => $hoten,

@@ -1,6 +1,6 @@
 @extends('welcome')
 
-@section('title','Thêm mới thời khóa biểu')
+@section('title','Đăng ký môn học')
 
 @section('content')
 
@@ -13,9 +13,6 @@
     </button>
 </div>
 @endif
-
-<?php //Hiển thị thông báo lỗi
-?>
 @if ( Session::has('error') )
 <div class="alert alert-danger alert-dismissible" role="alert">
     <strong>{{ Session::get('error') }}</strong>
@@ -49,7 +46,7 @@
             @endforeach
         </select>
     </div>
-    
+
     <div class="form-group">
         <label for="tengiangvien">Chọn giảng viên</label>
         <select class="form-control" id="tengiangvien" name="tengiangvien" required>
@@ -62,5 +59,4 @@
     <center><button type="submit" class="btn btn-primary">Thêm</button></center>
 </form>
 </div>
-
 @endsection

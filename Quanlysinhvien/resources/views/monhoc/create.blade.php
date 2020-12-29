@@ -12,9 +12,6 @@
     </button>
 </div>
 @endif
-
-<?php //Hiển thị thông báo lỗi
-?>
 @if ( Session::has('error') )
 <div class="alert alert-danger alert-dismissible" role="alert">
     <strong>{{ Session::get('error') }}</strong>
@@ -37,7 +34,6 @@
     </button>
 </div>
 @endif
-
 <div class="col-xs-4 col-xs-offset-4">
     <center>
         <h4>Thêm môn học</h4>
@@ -61,7 +57,6 @@
             <label for="tinchi">Tín chỉ</label>
             <input type="text" class="form-control" id="tinchi" name="tinchi" placeholder="Tín chỉ" maxlength="10" required />
         </div>
-        
         <center><button type="submit" class="btn btn-primary">Thêm</button></center>
     </form>
 </div>

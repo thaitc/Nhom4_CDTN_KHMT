@@ -23,8 +23,6 @@
 @endif
 <?php //Hiển thị danh sách học sinh
 ?>
-<div class="row">
-</div>
 <br />
 <div class="row">
     <div style="text-align: center;" class="col-md-4">

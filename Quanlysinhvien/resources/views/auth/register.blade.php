@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title','Trang quản lý')
+@section('title','Đăng ký')
 @section('content')
 <?php //Hiển thị thông báo thành công
 ?>
@@ -36,21 +36,21 @@
 	</button>
 </div>
 @endif
-<link href="/Quanlysinhvien/resources/css/login.css" rel="stylesheet" >
+<link href="/Quanlysinhvien/resources/css/login.css" rel="stylesheet">
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 		<!-- Tabs Titles -->
 
 		<!-- Icon -->
 		<div class="fadeIn first">
-			<img src="/Quanlysinhvien/logo.png" id="icon" alt="User Icon" />
+			<img src="/Quanlysinhvien/img/it.png" id="icon1" alt="User Icon" />
 		</div>
 
 		<!-- Login Form -->
 		<form role="form" method="POST" action="{{ url('/register') }}">
 			{!! csrf_field() !!}
 			<input placeholder="Mã sinh viên" class="fadeIn first" name="ma" type="text" value="{{ old('ma') }}" autofocus class="fadeIn ">
-			<input  placeholder="Họ và tên" name="name" type="text" value="{{ old('name') }}" autofocus>
+			<input placeholder="Họ và tên" name="name" type="text" value="{{ old('name') }}" autofocus>
 			<input placeholder="Email" name="email" type="text" value="{{ old('email') }}" autofocus class="fadeIn ">
 			<input placeholder="Mật khẩu" name="password" type="password" class="fadeIn">
 			<input class="fadeIn" placeholder="Xác nhận mật khẩu" name="password_confirmation" type="password">
@@ -61,15 +61,11 @@
 		<div id="formFooter">
 			<a href="{{ url('/login') }}" style="text-decoration: none;" class="underlineHover">Về Đăng nhập</a>
 		</div>
-		
+
 	</div>
 </div>
-<br/>
+<br />
 <style>
-	body {
-		background: url('/Quanlysinhvien/img/bia2.png');
-	}
-
 	.panel {
 		border-radius: 5px;
 	}
