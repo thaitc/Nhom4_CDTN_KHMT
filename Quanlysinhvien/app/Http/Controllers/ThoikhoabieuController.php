@@ -20,7 +20,7 @@ class ThoikhoabieuController extends Controller
     public function create(Request $request)
     {
         $dsgv = DB::table('monhoc')->join('giangvien', 'monhoc.tenkhoa', '=', 'giangvien.tenkhoa')->distinct()->select('tengiangvien')->where('giangvien.tenkhoa',  Auth::user()->tenkhoa)->get();
-        $dsmon = DB::table('monhoc')->select('id', 'tenmon')->where('tenkhoa',  Auth::user()->tenkhoa)->get();
+        $dsmon = DB::table('monhoc')->select('id', 'tenmon')->where('tenkhoa',Auth::user()->tenkhoa)->get();
         return view('thoikhoabieu.create')->with('dstenmon', $dsmon)->with('dstengiangvien', $dsgv);
     }
     public function store(Request $request)

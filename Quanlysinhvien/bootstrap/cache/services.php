@@ -37,10 +37,11 @@
     33 => 'Yajra\\DataTables\\FractalServiceProvider',
     34 => 'Yajra\\DataTables\\HtmlServiceProvider',
     35 => 'Yajra\\DataTables\\DataTablesServiceProvider',
-    36 => 'App\\Providers\\AppServiceProvider',
-    37 => 'App\\Providers\\AuthServiceProvider',
-    38 => 'App\\Providers\\EventServiceProvider',
-    39 => 'App\\Providers\\RouteServiceProvider',
+    36 => 'Collective\\Html\\HtmlServiceProvider',
+    37 => 'App\\Providers\\AppServiceProvider',
+    38 => 'App\\Providers\\AuthServiceProvider',
+    39 => 'App\\Providers\\EventServiceProvider',
+    40 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (

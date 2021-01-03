@@ -46,7 +46,6 @@
             @endforeach
         </select>
     </div>
-
     <div class="form-group">
         <label for="tengiangvien">Chọn giảng viên</label>
         <select class="form-control" id="tengiangvien" name="tengiangvien" required>

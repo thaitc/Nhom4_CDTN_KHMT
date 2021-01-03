@@ -19,12 +19,15 @@
     </button>
 </div>
 <?php endif; ?>
+<div class="text-center">
+<h4>Danh sách các môn học và giảng viên đã đăng ký</h4>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>STT</th>
                         <th>Giảng viên</th>
                         <th>Tên môn</th>
@@ -34,7 +37,7 @@
                     <?php $__currentLoopData = $listthoikhoabieu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $thoikhoabieu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td style="text-align: center;"><?php echo e($key+1); ?></td>
-                        <td style="vertical-align: middle;"><a href="thoikhoabieu/<?php echo e($thoikhoabieu->id); ?>/edit"><?php echo e($thoikhoabieu->tengiangvien); ?></a></td>
+                        <td style="vertical-align: middle;"><a href="danhgia/<?php echo e($thoikhoabieu->id); ?>/create"><?php echo e($thoikhoabieu->tengiangvien); ?></a></td>
                         <td style="vertical-align: middle;"><?php echo e($thoikhoabieu->tenmon); ?></td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -64,7 +67,9 @@
                     next: "Trang sau",
                     last: "Trang cuối"
                 },
-            }
+            },
+            searching: false, paging: true, info: false,
+            
 
         });
     });

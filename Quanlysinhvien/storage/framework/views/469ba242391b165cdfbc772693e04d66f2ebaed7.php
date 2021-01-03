@@ -56,9 +56,9 @@
 		</form>
 
 		<!-- Remind Passowrd -->
-		<div id="formFooter">
+		<!-- <div id="formFooter">
 			<a href="<?php echo e(url('/register')); ?>" style="text-decoration: none;" class="underlineHover">Đăng ký</a>
-		</div>
+		</div> -->
 
 	</div>
 	<br/>

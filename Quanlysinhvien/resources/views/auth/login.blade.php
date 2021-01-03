@@ -55,9 +55,9 @@
 		</form>
 
 		<!-- Remind Passowrd -->
-		<div id="formFooter">
+		<!-- <div id="formFooter">
 			<a href="{{ url('/register') }}" style="text-decoration: none;" class="underlineHover">Đăng ký</a>
-		</div>
+		</div> -->
 
 	</div>
 	<br/>

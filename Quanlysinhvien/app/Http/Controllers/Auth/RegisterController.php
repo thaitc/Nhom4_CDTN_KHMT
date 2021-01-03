@@ -20,11 +20,13 @@ class RegisterController extends Controller
         return Validator::make(
             $data,
             [
+                'ma' => 'required|string|max:255|unique:users',
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
             ],
             [
+                'ma.unique' => 'Mã sinh viên đã tồn tại',
                 'name.required' => 'Họ và tên là trường bắt buộc',
                 'name.max' => 'Họ và tên không quá 255 ký tự',
                 'email.required' => 'Email là trường bắt buộc',

@@ -19,12 +19,15 @@
     </button>
 </div>
 @endif
+<div class="text-center">
+<h4>Danh sách các môn học và giảng viên đã đăng ký</h4>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>STT</th>
                         <th>Giảng viên</th>
                         <th>Tên môn</th>
@@ -34,7 +37,7 @@
                     @foreach($listthoikhoabieu as $key => $thoikhoabieu)
                     <tr>
                         <td style="text-align: center;">{{ $key+1 }}</td>
-                        <td style="vertical-align: middle;"><a href="thoikhoabieu/{{ $thoikhoabieu->id }}/edit">{{ $thoikhoabieu->tengiangvien }}</a></td>
+                        <td style="vertical-align: middle;"><a href="danhgia/{{ $thoikhoabieu->id }}/create">{{ $thoikhoabieu->tengiangvien }}</a></td>
                         <td style="vertical-align: middle;">{{ $thoikhoabieu->tenmon }}</td>
                     </tr>
                     @endforeach
@@ -64,7 +67,9 @@
                     next: "Trang sau",
                     last: "Trang cuối"
                 },
-            }
+            },
+            searching: false, paging: true, info: false,
+            
 
         });
     });

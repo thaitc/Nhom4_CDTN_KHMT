@@ -23,7 +23,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
             <p><a class="btn btn-primary" href="{{ url('admin/sinhvien/create') }}">Thêm mới</a></p>
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>STT</th>

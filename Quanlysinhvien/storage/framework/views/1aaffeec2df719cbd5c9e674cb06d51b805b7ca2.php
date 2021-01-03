@@ -10,7 +10,6 @@
     <link href="/Quanlytruonghoc/resources/css/menu.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
 
-    <link href="/Quanlytruonghoc/resources/css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -243,7 +242,7 @@
 <header>
     <div class="header">
         <div class="logo">
-            <a href="<?php echo e(url('/')); ?>" class="logo"><img src="/Quanlysinhvien/logo.png" id="icon" alt="User Icon" /></a>
+            <a href="<?php echo e(url('/')); ?>" class="logo"><img src="/Quanlysinhvien/img/hnue111.jpg" id="icon" alt="User Icon" /></a>
         </div>
         <div style="float: right;" class="hello">
             <?php if(Route::has('login')): ?>

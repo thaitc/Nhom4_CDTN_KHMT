@@ -25,7 +25,11 @@ Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLog
  Route::get('/diemhoctap', 'DiemhoctapController@index');
  Route::get('/xephang', 'XephangController@index');
  Route::get('/danhgia', 'DanhgiaController@index');
- Route::get('/danhgia/{id}/edit', 'DanhgiaController@edit');
+ Route::get('/danhgia/{id}/create', 'DanhgiaController@create');
+ Route::post('/danhgia/update', 'DanhgiaController@store');
+ Route::get('/admin/danhgiagiangvien', 'AdmindanhgiagiangvienController@index');
+ Route::get('/admin/danhgiagiangvien/{id}/edit', 'AdmindanhgiagiangvienController@edit');
+ Route::get('/admin/danhgiagiangvienchitiet', 'AdmindanhgiagiangvienController@index1');
 //hocsinh
 Route::get('admin/sinhvien/create', 'SinhvienController@create');
 Route::post('admin/sinhvien/create', 'SinhvienController@store');
@@ -63,3 +67,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/lienhe', 'LienheController@index');
 Route::post('/lienhe/update', 'LienheController@index');
+
+Route::get('admin/admindiem', 'AdmindiemController@index');
+Route::get('admin/admindiem/{id}/edit', 'AdmindiemController@edit');
+Route::post('admin/admindiem/update', 'AdmindiemController@update');
+Route::get('admin/admindiem/{id}/editdiem', 'AdmindiemController@editdiem');
+Route::post('admin/admindiem/updatediem', 'AdmindiemController@updatediem');
